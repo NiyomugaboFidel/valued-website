@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VALUED Program — Shine to the World</title>
+  <link rel="icon" type="image//png" href="webp/logo02.webp">
+  <!-- ============== CDN CSS ============== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <meta name="description" content="VALUED is a youth development platform in Rwanda showcasing programs in arts, sports, leadership, and technology. Join workshops, competitions, and cultural events.">
+  <!-- ============== Custom Styles ============== -->
+  <style>
+    :root{
+      --yellow:#FFD700;        /* Bright yellow */
+      --red:#a71c33;           /* Deep red */
+      --black:#0b0d16;         /* Dark background */
+      --glass:rgba(255,255,255,.06);
+      --muted:rgba(255,255,255,.65);
+      --border:rgba(255,255,255,.14);
+    }
+    
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;
+      background:var(--black);
+      color:#fff;
+      margin:0;
+    }
+    
+    /* ===== Global utility ===== */
+    .container-xl{max-width:1200px;margin:auto;padding:0 1rem}
+    .btn-neo{
+      background:linear-gradient(135deg,var(--yellow),var(--red));
+      border:0;color:#000;font-weight:600;
+    }
+    .btn-neo:hover{filter:brightness(1.1)}
+    .glass{
+      background:var(--glass);
+      backdrop-filter:blur(12px);
+      border:1px solid var(--border)
+    }
+    .rounded-2xl{border-radius:1.25rem}
+    .shadow-soft{box-shadow:0 10px 40px rgba(0,0,0,.35)}
+    .text-muted-80{color:var(--muted)}
+    .badge-soft{
+      background:rgba(255,255,255,.12);
+      border:1px solid var(--border)
+    }
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--border),transparent)
+    }
+    
+    /* ======= Navbar ======= */
+    .navbar{transition:all .25s ease}
+    .navbar .nav-link{color:#fff;opacity:.85}
+    .navbar .nav-link.active,
+    .navbar .nav-link:hover{opacity:1;color:var(--yellow)}
+    .nav-glow{box-shadow:0 6px 24px rgba(255,215,0,.25)}
+    
+    /* ======= Hero ======= */
+    .hero{
+      position:relative;min-height:100vh;display:grid;place-items:center;overflow:hidden;
+      background:url("webp/LYN\ PHOTO\ STUDIO.._59.webp") no-repeat center/cover
+    }
+    .hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5)}
+    .hero h1{
+      font-weight:900;letter-spacing:.4px;color:#fff;
+      position:relative;z-index:1;text-align:center
+    }
+    .typed-cursor{opacity:.8}
+    
+    /* ======= Sections ======= */
+    section{padding:60px 0}
+    .section-title{font-weight:800;letter-spacing:.3px;color:var(--yellow)}
+    .kicker{
+      font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)
+    }
+    
+    /* ======= Stats ======= */
+    .stat-tile{border:1px solid var(--border);padding:1rem;text-align:center}
+    .stat-number{font-size:2rem;font-weight:800;color:var(--yellow)}
+    
+    /* ======= Programs ======= */
+    .program-card{
+      transition:transform .35s ease,box-shadow .35s ease;
+      border:1px solid var(--border)
+    }
+    .program-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 40px rgba(255,215,0,.25)
+    }
+    
+    
+    
+    /* ======= Gallery ======= */
+    .filter-btn.active{
+      background:linear-gradient(135deg,var(--yellow),var(--red));
+      border:0;color:#000;font-weight:600
+    }
+    .gallery figure{overflow:hidden;margin:0}
+    .gallery img{transition:transform .5s ease;width:100%;display:block}
+    .gallery figure:hover img{transform:scale(1.06)}
+    
+
+    /* Force all campus swiper images to same size */
+.campus-swiper img {
+  width: 100%;
+  height: 350px;   /* you can adjust this value */
+  object-fit: cover; /* crop instead of stretching */
+  border-radius: 15px; /* optional: keep rounded corners */
+}
+
+    /* ======= Partners marquee ======= */
+    .marquee{display:flex;gap:24px;animation:scroll 30s linear infinite}
+    .marquee:hover{animation-play-state:paused}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    
+    /* ======= Footer ======= */
+    footer .link-list a{color:var(--muted);text-decoration:none}
+    footer .link-list a:hover{color:var(--yellow)}
+    
+    /* ======= Misc ======= */
+    #progressBar{
+      position:fixed;top:0;left:0;height:3px;
+      background:linear-gradient(90deg,var(--yellow),var(--red));
+      width:0;z-index:9999
+    }
+    #backToTop{position:fixed;right:18px;bottom:18px;z-index:999;border:0}
+    .parallax{background-attachment:fixed;background-size:cover;background-position:center}
+    
+    /* ======= Responsive ======= */
+    @media (max-width:1199.98px){
+      .container-xl{padding:0 .75rem}
+      section{padding:50px 0}
+      .stat-number{font-size:1.8rem}
+    }
+    
+    @media (max-width:991.98px){
+      .t-item{width:100%;margin-bottom:1.5rem}
+      .timeline:before{left:10px;transform:none}
+      .t-left,.t-right{text-align:left;padding-left:32px;padding-right:0}
+      .t-left .dot{left:3px;right:auto}
+      .t-right .dot{left:3px}
+      .hero h1{font-size:2rem}
+    }
+    
+    @media (max-width:767.98px){
+      section{padding:40px 0}
+      .stat-number{font-size:1.5rem}
+      .kicker{font-size:.8rem}
+      .hero h1{font-size:1.5rem}
+    }
+    
+    @media (max-width:575.98px){
+      .hero h1{font-size:1.3rem}
+      .t-left,.t-right{padding-left:16px;padding-right:0}
+      .marquee{gap:16px}
+    }
+    /* ======= Footer Mobile Centering ======= */
+@media (max-width:767.98px){
+  footer .row {
+    text-align: center;
+    justify-content: center;
+  }
+
+  footer .col-md-4,
+  footer .col-md-2,
+  footer .col-md-3 {
+    margin-bottom: 1.5rem;
+  }
+
+  footer .link-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+
+  footer .link-list a {
+    display: block;
+  }
+
+  footer .d-flex.gap-2 {
+    justify-content: center !important;
+  }
+
+  footer form#newsForm {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  footer form#newsForm input,
+  footer form#newsForm button {
+    width: 100%;
+  }
+
+  footer #newsMsg {
+    text-align: center;
+  }
+}
+
+    </style>
+    
+
+</head>
+<body>
+  <!-- Scroll progress -->
+  <div id="progressBar"></div>
+
+  <!-- ======= NAVBAR ======= -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top glass">
+    <div class="container-xl">
+      <a class="navbar-brand fw-bold" href="index.html">
+         VALUED 
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="campus.html">Campus</a></li>
+          <li class="nav-item"><a class="nav-link" href="impact.html">Impact</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+        </ul>
+        <a href="apply.html" class="btn btn-neo ms-lg-3 rounded-pill px-4 py-2">Apply Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======= HERO ======= -->
+  <header id="home" class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.coverr.co/videos/coverr-hands-of-people-9966/1080p.mp4" type="video/mp4" />
+    </video>
+    <div class="overlay"></div>
+    <div class="container-xl position-relative text-center" data-aos="fade-up">
+      <div class="mb-3 kicker">Empowering Youth · Kigali — Africa — World</div>
+      <h1 class="display-4 mb-3">
+        From Potential To <span class="text-info">Performance</span><br/>
+        <span id="typed" class="text-warning"></span>
+      </h1>
+      <p class="lead text-muted-80 mx-auto" style="max-width:780px">
+        The VALUED Program discovers, trains and showcases skills in arts, technology, sports and leadership — giving young people the confidence, tools and stages to impact the world.
+      </p>
+      <div class="d-flex gap-3 justify-content-center mt-4">
+        <a href="programs.html" class="btn btn-neo rounded-pill px-4"><i class="fa-solid fa-rocket me-2"></i>Explore Programs</a>
+        <a href="#videoIntro" class="btn btn-outline-light rounded-pill px-4"><i class="fa-solid fa-circle-play me-2"></i>Watch Intro</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= ABOUT ======= -->
+  <section id="about">
+    <div class="container-xl">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="p-4 glass rounded-2xl shadow-soft">
+            <span class="kicker">About Us</span>
+            <h2 class="section-title mt-2">Mission, Vision & Values</h2>
+            <p class="text-muted-80 mt-2"><strong>Valued Education</strong>, a proud initiative of <strong>Light Center in Kabuga, Kigali, Rwanda</strong>, was launched over two years ago to empower the next generation through innovative, child-centered learning. We started as a small community program and have grown into a vibrant hub for over 300 children, offering a variety of weekly programs in academics, arts, sports, and life skills.</p>
+            <div class="row g-3 mt-2">
+              <div class="col-sm-6">
+                <div class="p-3 rounded-2xl glass h-100">
+                  <i class="fa-solid fa-bullseye me-2 text-info"></i>
+                  <strong>Mission</strong>
+                  <p class="small text-muted-80 mb-0 mt-1">Valued is more than a place to learn; it’s a place to make friends and feel a sense of belonging and support.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="p-3 rounded-2xl glass h-100">
+                  <i class="fa-solid fa-eye me-2 text-warning"></i>
+                  <strong>Vision</strong>
+                  <p class="small text-muted-80 mb-0 mt-1">From academic skills to character building, we focus on helping kids develop into well-rounded, confident individuals.</p>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="p-3 rounded-2xl glass">
+                  <i class="fa-solid fa-heart me-2 text-danger"></i>
+                  <strong>Values</strong>
+                  <ul class="small text-muted-80 mb-0 mt-1 ps-3">
+                    <li>Growth mindset and excellence</li>
+                    <li>Creativity, curiosity and courage</li>
+                    <li>Community, inclusion and integrity</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3"><a class="btn btn-outline-light rounded-pill" href="about.html">Learn More</a></div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="row g-3">
+            <div class="col-6"><img class="w-100 rounded-2xl shadow-soft" src="webp/LYN PHOTO STUDIO.._59.webp" alt="arts"/></div>
+            <div class="col-6"><img class="w-100 rounded-2xl shadow-soft" src="webp/INTERGE-05.webp" alt="tech"/></div>
+            <div class="col-12"><img class="w-100 rounded-2xl shadow-soft" src="webp/logo02.webp" alt="music"/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ======= STATS ======= -->
+<section id="stats" class="parallax stats-section">
+  <div class="container-xl py-5 position-relative z-10">
+    <div class="glass rounded-2xl p-4 p-md-5 text-center">
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="stat-tile rounded-2xl p-4">
+            <div class="stat-number" data-count="500">0</div>
+            <div class="small text-muted-80">Alumni</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-tile rounded-2xl p-4">
+            <div class="stat-number" data-count="2">0</div>
+            <div class="small text-muted-80">Partners</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-tile rounded-2xl p-4">
+            <div class="stat-number" data-count="7">0</div>
+            <div class="small text-muted-80">Active Tracks</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-tile rounded-2xl p-4">
+            <div class="stat-number" data-count="2">0</div>
+            <div class="small text-muted-80">Showcases / yr</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Blurred Parallax Background for Stats Section */
+.stats-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('webp/img03.webp') center/cover no-repeat fixed;
+  filter: blur(4px) brightness(0.3); /* blur + dark overlay */
+  z-index: 1;
+}
+
+.stats-section .container-xl {
+  position: relative;
+  z-index: 2; /* keep content above background */
+}
+</style>
+
+
+
+
+
+
+
+
+
+<!-- ======= PROGRAMS (Tabs) ======= -->
+<section id="programs">
+  <div class="container-xl">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <span class="kicker">Programs</span>
+      <h2 class="section-title mt-2">Choose your launchpad</h2>
+      <p class="text-muted-80">Our approach operates through four core programs.</p>
+    </div>
+
+    <ul class="nav nav-pills justify-content-center gap-2 mb-4" id="progTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-outline-light active" id="p-arts-tab" data-bs-toggle="pill" data-bs-target="#p-arts" type="button" role="tab">InnovaKidz</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-outline-light" id="p-tech-tab" data-bs-toggle="pill" data-bs-target="#p-tech" type="button" role="tab">Valued Rwanda Talent & Innovation Competition (RTIC)</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-outline-light" id="p-sports-tab" data-bs-toggle="pill" data-bs-target="#p-sports" type="button" role="tab">ValueXchange Workshops</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-outline-light" id="p-lead-tab" data-bs-toggle="pill" data-bs-target="#p-lead" type="button" role="tab">Connect & Cheers Events</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="progTabContent">
+      <!-- Arts -->
+<div class="tab-pane fade show active" id="p-arts" role="tabpanel">
+  <div class="row g-4">
+    <!-- Rwandan Traditional Dance -->
+    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="0">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden">
+        <img src="webp/traditionl-02.webp" alt="Rwandan Traditional Dance" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-drum text-info fs-3"></i>
+          <h5 class="mt-2">Rwandan Traditional Dance</h5>
+          <p class="text-muted-80 small">Experience the beauty of Rwanda’s cultural heritage through traditional music, dance, and storytelling.</p>
+          <a href="programs.html" class="btn btn-sm btn-neo rounded-pill">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modern Dance -->
+    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden">
+        <img src="webp/modern-02.webp" alt="Modern Dance" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-music text-warning fs-3"></i>
+          <h5 class="mt-2">Modern Dance</h5>
+          <p class="text-muted-80 small">Explore hip-hop, contemporary, and afrobeat dance styles with professional choreography and stage training.</p>
+          <a href="programs.html" class="btn btn-sm btn-neo rounded-pill">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Football -->
+    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden">
+        <img src="webp/football-01.webp" alt="Football" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-futbol text-danger fs-3"></i>
+          <h5 class="mt-2">Football</h5>
+          <p class="text-muted-80 small">Train in teamwork, discipline, and strategy while building skills to compete in friendly and professional matches.</p>
+          <a href="programs.html" class="btn btn-sm btn-neo rounded-pill">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fashion -->
+    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden">
+        <img src="webp/fashion-02.webp" alt="Fashion" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-shirt text-success fs-3"></i>
+          <h5 class="mt-2">Fashion</h5>
+          <p class="text-muted-80 small">Discover styling, runway confidence, and creative fashion design to showcase personal and cultural identity.</p>
+          <a href="programs.html" class="btn btn-sm btn-neo rounded-pill">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden">
+        <img src="webp/arts.jpg" alt="Arts" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-palette text-success fs-3"></i>
+          <h5 class="mt-2">Arts</h5>
+          <p class="text-muted-80 small">Explore painting, sculpture, and creative arts to express imagination and cultural heritage.</p>
+          <a href="programs.html" class="btn btn-sm btn-neo rounded-pill">Learn More</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden">
+        <img src="webp/LYN PHOTO STUDIO.._42.webp" alt="Language" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-language text-success fs-3"></i>
+          <h5 class="mt-2">Language</h5>
+          <p class="text-muted-80 small">Develop communication skills, literature appreciation, and multilingual abilities for personal growth.</p>
+          <a href="programs.html" class="btn btn-sm btn-neo rounded-pill">Learn More</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden">
+        <img src="webp/drama.webp" alt="Drama" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-theater-masks text-success fs-3"></i>
+          <h5 class="mt-2">Drama</h5>
+          <p class="text-muted-80 small">Learn acting, stage performance, and storytelling to enhance confidence and creativity.</p>
+          <a href="programs.html" class="btn btn-sm btn-neo rounded-pill">Learn More</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+      <!-- Main Program Card -->
+<div class="tab-pane fade" id="p-tech" role="tabpanel">
+  <div class="row g-4 justify-content-left">
+    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="0">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden shadow-lg">
+        <img src="webp/competition.JPG" alt="Intercell Competition" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-trophy text-warning fs-3"></i>
+          <h5 class="mt-2">Intercell Competition</h5>
+          <p class="text-muted-80 small">
+            <strong>1st  Edition </strong> Intercell Talent Competition from <strong>25th August to 29th August</strong> featuring dance, drama, arts, singing, poetry, comedy, and football!
+          </p>
+          <button class="btn btn-sm btn-neo rounded-pill" onclick="openIntercellPopup()">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Intercell Modal -->
+<div id="intercellModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeIntercellPopup()">&times;</span>
+    <h2 class="text-center mb-3">Intercell Competition Programs</h2>
+    <p class="text-center text-muted mb-4">Held from 25th August to 29th August</p>
+    <div class="row g-4">
+
+      <!-- Program Cards -->
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/traditionl-01.webp" alt="Rwandan Traditional Dance">
+          <div class="hover-info">
+            <h6>Rwandan Traditional Dance</h6>
+            <p>Celebrating Rwanda’s heritage through dance and music, performed by talented youth from Rusororo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/modern-01.webp" alt="Modern Dance">
+          <div class="hover-info">
+            <h6>Modern Dance</h6>
+            <p>Showcasing creativity in contemporary, hip-hop, and afrobeat dance styles with great energy and passion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/drama-01.webp" alt="Drama & Acting">
+          <div class="hover-info">
+            <h6>Drama</h6>
+            <p>Acting groups performed plays with messages on culture, unity, and community life.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/arts.webp" alt="Arts">
+          <div class="hover-info">
+            <h6>Arts</h6>
+            <p>Explore painting, sculpture, and creative arts to express imagination and cultural heritage.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/singing.webp" alt="Singing Competition">
+          <div class="hover-info">
+            <h6>Singing</h6>
+            <p>Soloists and groups performed powerful songs, showing the depth of local vocal talent.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/craft.webp" alt="Poetry Competition">
+          <div class="hover-info">
+            <h6>Poetry</h6>
+            <p>Youth expressed emotions, identity, and creativity through spoken word and poetry recitals.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/comedy.webp" alt="Comedy">
+          <div class="hover-info">
+            <h6>Comedy</h6>
+            <p>Young comedians entertained the audience with humor, fun, and social messages.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/football-02.webp" alt="Football Competition">
+          <div class="hover-info">
+            <h6>Football</h6>
+            <p>Teams from different sectors competed in exciting matches, promoting teamwork, talent, and discipline.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function openIntercellPopup(){
+    document.getElementById('intercellModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeIntercellPopup(){
+    document.getElementById('intercellModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+<style>
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding:20px;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #807f7f;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Close Button */
+.modal-close {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 12px;
+  border-radius: 50%;
+  z-index: 10000;
+}
+
+/* Hover Card */
+.hover-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.hover-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.hover-card:hover img {
+  transform: scale(1.1);
+}
+
+.hover-info {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover .hover-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-info h6 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.hover-info p {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hover-card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hover-card img {
+    height: 150px;
+  }
+}
+</style>
+
+
+
+      <!-- Tourism Workshop -->
+<div class="tab-pane fade" id="p-sports" role="tabpanel">
+  <div class="row g-4 justify-content-left">
+    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="0">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden shadow-lg">
+        <img src="webp/workshop.webp" alt="Rwanda Tourism Workshop" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-earth-africa text-warning fs-3"></i>
+          <h5 class="mt-2">Tourism Workshop</h5>
+          <p class="text-muted-80 small">
+            Discover Rwanda’s rich tourism offerings including national parks, cultural heritage sites, and eco-tourism opportunities. Learn sustainable tourism practices and how to engage local communities effectively.
+          </p>
+          <button class="btn btn-sm btn-neo rounded-pill" onclick="openTourismPopup()">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tourism Modal -->
+<div id="tourismModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeTourismPopup()">&times;</span>
+    <h2 class="text-center mb-3">Rwanda Tourism Workshop</h2>
+    <p class="text-center text-muted mb-4">Explore the highlights and activities of the workshop</p>
+    <div class="row g-4">
+
+      <!-- Workshop Images -->
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/workshop.webp" alt="Workshop Image 1">
+          <div class="hover-info">
+            <p>Introduction to sustainable tourism practices.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/workshop-01.webp" alt="Workshop Image 2">
+          <div class="hover-info">
+            <p>Touring national parks and wildlife.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/workshop-02.webp" alt="Workshop Image 3">
+          <div class="hover-info">
+            <p>Learning about cultural heritage sites.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/workshp-03.webp" alt="Workshop Image 4">
+          <div class="hover-info">
+            <p>Eco-tourism and community engagement sessions.</p>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function openTourismPopup(){
+    document.getElementById('tourismModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeTourismPopup(){
+    document.getElementById('tourismModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+<style>
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding:20px;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #747272;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* Close Button */
+.modal-close {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 12px;
+  border-radius: 50%;
+  z-index: 10000;
+}
+
+/* Hover Card */
+.hover-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.hover-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.hover-card:hover img {
+  transform: scale(1.1);
+}
+
+.hover-info {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+.hover-card:hover .hover-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-info h6 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.hover-info p {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hover-card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hover-card img {
+    height: 150px;
+  }
+}
+</style>
+
+
+     <!-- Main Leadership Programs Card -->
+<div class="tab-pane fade" id="p-lead" role="tabpanel">
+  <div class="row g-4 justify-content-left">
+    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="0">
+      <div class="program-card glass rounded-2xl p-0 h-100 overflow-hidden shadow-lg">
+        <img src="webp/CONNECT-02.webp" alt="Connect And Cheers" class="w-100 program-img">
+        <div class="p-4">
+          <i class="fa-solid fa-users text-warning fs-3"></i>
+          <h5 class="mt-2">Connect And Cheers</h5>
+          <p class="text-muted-80 small">
+            Join our Connect And Cheers featuring watch football tournaments, talent shows, cultural festivals, and Movie Night. Learn, participate, and explore!
+          </p>
+          <button class="btn btn-sm btn-neo rounded-pill" onclick="openLeadershipPopup()">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Leadership Programs -->
+<div id="leadershipModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeLeadershipPopup()">&times;</span>
+    <h2 class="text-center mb-3">Connect And Cheers</h2>
+    <p class="text-center text-muted mb-4">Explore all activities and workshops included in our Connect And Cheers Program</p>
+    <div class="row g-4">
+
+      <!-- Football Match -->
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/CONNECT-02.webp" alt="Football Match">
+          <div class="hover-info">
+            <h6>Connecting</h6>
+          </div>
+        </div>
+      </div>
+
+      <!-- Talent Show -->
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/CONNECT-01.webp" alt="Talent Show">
+          <div class="hover-info">
+            <h6>Culturel Games</h6>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cultural Festival -->
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/CONNECT-05.webp" alt="Cultural Festival">
+          <div class="hover-info">
+            <h6>Friendship</h6>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eco-Tourism Adventure -->
+      <div class="col-md-6 col-lg-3">
+        <div class="hover-card">
+          <img src="webp/CONNECT-03.webp" alt="Movie Night">
+          <div class="hover-info">
+            <h6>cheers Night</h6>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function openLeadershipPopup(){
+    document.getElementById('leadershipModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLeadershipPopup(){
+    document.getElementById('leadershipModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+</script>
+
+<style>
+  /* Modal */
+  /* Default desktop (centered modal) */
+.modal {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center; /* Center on large screen */
+  overflow-y: auto;
+  padding:20px;
+  z-index: 9999;
+}
+
+/* Default modal content */
+.modal-content {
+  background: #a19f9f;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* 📱 Mobile fix */
+@media (max-width: 768px) {
+  .modal {
+    align-items: flex-start;  /* push popup to start lower */
+    padding-top: 60px;        /* space from top (so X button is visible) */
+  }
+
+  .modal-content {
+    margin-top: 0;   /* remove extra margin since parent handles spacing */
+    width: 95%;      /* make it fit better on small screen */
+  }
+}
+
+
+  
+  .modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff; /* make it visible on dark background */
+  background: rgba(0,0,0,0.4); /* small background for visibility */
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* stays above everything */
+}
+
+
+ 
+  /* Hover Card */
+  .hover-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  .hover-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  .hover-info {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+  }
+  
+  .hover-card:hover .hover-info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hover-info h6 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .hover-info p {
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  
+  /* ===== Responsive Media Queries ===== */
+  
+  /* Small devices (phones) */
+  @media (max-width: 576px) {
+    .modal-content {
+      width: 95%;
+      padding: 16px;
+      border-radius: 12px;
+    }
+  
+    .modal-close {
+      font-size: 24px;
+      top: 8px;
+      right: 10px;
+    }
+  
+    .hover-card img {
+      height: 160px; /* smaller images on mobile */
+    }
+  
+    .hover-info h6 {
+      font-size: 14px;
+    }
+  
+    .hover-info p {
+      font-size: 12px;
+    }
+  }
+  
+  /* Medium devices (tablets) */
+  @media (min-width: 577px) and (max-width: 992px) {
+    .modal-content {
+      max-width: 700px;
+      padding: 20px;
+    }
+  
+    .hover-card img {
+      height: 200px;
+    }
+  
+    .hover-info h6 {
+      font-size: 15px;
+    }
+  }
+  
+  /* Large devices (desktops) */
+  @media (min-width: 993px) {
+    .modal-content {
+      max-width: 1000px;
+    }
+  
+    .hover-card img {
+      height: 220px;
+    }
+  }
+  </style>
+  
+
+</section>
+
+<style>
+  .program-card img.program-img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+  }
+</style>
+
+
+
+
+
+
+<!-- ======= TRACKS (Cards + hover) ======= -->
+<section id="tracks" class="parallax tracks-section">
+  <div class="container-xl py-5 position-relative z-10">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <span class="kicker">Tracks</span>
+      <h2 class="section-title mt-2">Pick a path — or build your own</h2>
+    </div>
+    <div class="row g-4">
+      
+      <!-- First Track -->
+      <div class="col-md-6 col-lg-4" data-aos="flip-left">
+        <div class="glass rounded-2xl p-4 h-100 shadow-soft">
+          <div class="d-flex align-items-center mb-2">
+            <i class="fa-solid fa-drum text-info me-2"></i><strong>Rwandan Culture</strong>
+          </div>
+          <p class="text-muted-80 small">Explore traditional dance, music, art, and storytelling that celebrate Rwanda’s rich heritage.</p>
+          <div class="d-flex gap-2 small">
+            <span class="badge badge-soft">Dance</span>
+            <span class="badge badge-soft">Music</span>
+            <span class="badge badge-soft">Art</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Track -->
+      <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
+        <div class="glass rounded-2xl p-4 h-100 shadow-soft">
+          <div class="d-flex align-items-center mb-2">
+            <i class="fa-solid fa-user-tie text-warning me-2"></i><strong>Leadership</strong>
+          </div>
+          <p class="text-muted-80 small">Develop leadership skills to inspire, guide, and empower communities toward positive change.</p>
+          <div class="d-flex gap-2 small">
+            <span class="badge badge-soft">Vision</span>
+            <span class="badge badge-soft">Teamwork</span>
+            <span class="badge badge-soft">Impact</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Track -->
+      <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="200">
+        <div class="glass rounded-2xl p-4 h-100 shadow-soft">
+          <div class="d-flex align-items-center mb-2">
+            <i class="fa-solid fa-handshake text-success me-2"></i><strong>Friendship & Interaction</strong>
+          </div>
+          <p class="text-muted-80 small">Build meaningful friendships, network with peers, and strengthen collaboration through shared experiences.</p>
+          <div class="d-flex gap-2 small">
+            <span class="badge badge-soft">Friendship</span>
+            <span class="badge badge-soft">Interaction</span>
+            <span class="badge badge-soft">Collaboration</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<style>
+/* Blurred Parallax Background */
+.tracks-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.tracks-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('webp/image01.webp') center/cover no-repeat fixed;
+  filter: blur(4px) brightness(0.3); /* Blur + darken */
+  z-index: 1;
+}
+
+.tracks-section .container-xl {
+  position: relative;
+  z-index: 2; /* Keep content above background */
+}
+</style>
+
+
+
+  <!-- ======= CAMPUS EXPERIENCE ======= -->
+  <section id="campus">
+    <div class="container-xl">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-5" data-aos="fade-right">
+          <span class="kicker">Campus Experience</span>
+          <h2 class="section-title mt-2">Training , Community Events & Gathering</h2>
+          <p class="text-muted-80">Hands‑on spaces, supportive mentors and a buzzing calendar of meetups. Learn, build and showcase every week.</p>
+          <ul class="text-muted-80 small">
+            <li>Professional training programs for youth development</li>
+            <li>Community events that connect and inspire</li>
+            <li>Gatherings to share culture, knowledge, and talents</li>
+          </ul>
+          
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="swiper campus-swiper rounded-2xl shadow-soft">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img class="w-100" src="webp/campus -01.webp" alt="lab"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/campus-02.webp" alt="arts"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/CONNECT-02.webp" alt="workshop"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/CONNECT-01.webp" alt="lab"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/campus-05.webp" alt="arts"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/fashion-02.webp" alt="workshop"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/CONNECT-04.webp" alt="lab"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/CONNECT-05.webp" alt="arts"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/singing.webp" alt="workshop"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/INTERGE-02.webp" alt="workshop"/></div>
+              <div class="swiper-slide"><img class="w-100" src="webp/INTERGE-05.webp" alt="workshop"/></div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+ <!-- ======= EVENTS (Timeline + slider) ======= -->
+<section id="events" class="parallax events-section">
+  <div class="container-xl py-5 position-relative z-10">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="kicker">Events</span>
+      <h2 class="section-title mt-2">What’s happening</h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline mb-5">
+      <div class="t-item t-left" data-aos="fade-right">
+        <span class="dot"></span>
+        <div class="glass rounded-2xl p-4">
+          <div class="small text-muted-80">July 23.2025 - Aug 29.2025</div>
+          <strong>Intore Mubiruhuko</strong>
+          <div class="small">start at • 1:30 PM - 4:30 PM</div>
+        </div>
+      </div>
+      <div class="t-item t-right" data-aos="fade-left">
+        <span class="dot"></span>
+        <div class="glass rounded-2xl p-4">
+          <div class="small text-muted-80">Aug 25.2025 - Aug 29.2025</div>
+          <strong>Intercell Competiotion</strong>
+          <div class="small">Main Hall • 1:30 PM - 4:30 PM</div>
+        </div>
+      </div>
+      <div class="t-item t-left" data-aos="fade-right">
+        <span class="dot"></span>
+        <div class="glass rounded-2xl p-4">
+          <div class="small text-muted-80">Every Sunday</div>
+          <strong>InnovaKidz- Program</strong>
+          <div class="small">Campus • 2:00 AM - 5:00 PM</div>
+        </div>
+      </div>
+      <div class="t-item t-right" data-aos="fade-left">
+        <span class="dot"></span>
+        <div class="glass rounded-2xl p-4">
+          <div class="small text-muted-80">Oct 05</div>
+          <strong>Incampus Workshop</strong>
+          <div class="small">Main Hall • 9:00 PM - 1:30 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper events-swiper glass rounded-2xl p-3">
+      <div class="swiper-wrapper">
+
+        
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <div class="row g-3 align-items-center">
+            <div class="col-md-6">
+              <img class="event-img rounded-2xl" src="webp/img04.webp" alt="event"/>
+            </div>
+            <div class="col-md-6">
+              <h5>Intore Mubiruhuko</h5>
+<p class="text-muted-80 small">
+  A cultural experience program where participants learn the traditional <strong>Intore dance</strong>, 
+  its history, and the values it represents in Rwandan heritage. The sessions focus on 
+  <strong>discipline, unity, strength, and cultural pride</strong>.
+</p>
+<p class="text-muted-80 small">
+  Alongside the training, there will be interactive workshops on traditional drums, costumes, 
+  and storytelling, allowing participants to fully immerse themselves in Rwandan culture.
+</p>
+
+              <p class="text-muted-80 small">
+                <strong>Prizes:</strong> Top 3 teams receive tech kits, mentorship, and invitations to 
+                represent Rwanda in regional competitions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <div class="row g-3 align-items-center">
+            <div class="col-md-6">
+              <img class="event-img rounded-2xl" src="webp/workshop.webp" alt="event"/>
+            </div>
+            <div class="col-md-6">
+              <h5>Tourism Workshop</h5>
+<p class="text-muted-80 small">
+  An engaging workshop focused on <strong>exploring Rwanda’s tourism potential</strong>. Participants will 
+  gain insights into sustainable tourism, cultural heritage promotion, and eco-friendly practices that 
+  support community development.
+</p>
+<p class="text-muted-80 small">
+  The program includes interactive sessions with industry experts, case studies on successful tourism 
+  initiatives, and practical strategies for improving visitor experiences. 
+</p>
+<p class="text-muted-80 small">
+  <strong>Special Note:</strong> Open to students, professionals, and community members passionate about 
+  tourism and cultural preservation.
+</p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <div class="row g-3 align-items-center">
+            <div class="col-md-6">
+              <img class="event-img rounded-2xl" src="webp/campus-03.webp" alt="event"/>
+            </div>
+            <div class="col-md-6">
+              <h5>Open Mic & Talent Night</h5>
+              <p class="text-muted-80 small">
+                A vibrant celebration of <strong>music, poetry, comedy, and dance</strong>. The stage is 
+                open to all students and community members to share their unique talents. This is a safe, 
+                supportive space where creativity is celebrated and friendships are built. 
+              </p>
+              <p class="text-muted-80 small">
+                Expect an energetic night with a live band, spotlight moments for performers, and 
+                opportunities for collaboration between artists.
+              </p>
+              <p class="text-muted-80 small">
+                <strong>Special Note:</strong> Bring your family and friends — audience participation 
+                is highly encouraged!
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Swiper pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CSS -->
+<style>
+/* Events Section BG */
+.events-section {
+  position: relative;
+  overflow: hidden;
+}
+.events-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('webp/img02.webp') center/cover no-repeat fixed;
+  filter: blur(4px) brightness(0.3);
+  z-index: 1;
+}
+.events-section .container-xl {
+  position: relative;
+  z-index: 2;
+}
+
+/* Timeline */
+.timeline{position:relative;margin:2rem 0}
+.timeline:before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--yellow),var(--red));
+  transform:translateX(-50%)
+}
+.t-item{position:relative;width:50%;margin-bottom:2rem}
+.t-left{padding-right:40px;text-align:right}
+.t-right{margin-left:auto;padding-left:40px}
+.dot{
+  position:absolute;top:16px;width:14px;height:14px;
+  background:linear-gradient(135deg,var(--yellow),var(--red));
+  border-radius:50%;border:2px solid var(--black);
+  box-shadow:0 0 0 6px rgba(255,215,0,.25)
+}
+.t-left .dot{right:-7px}
+.t-right .dot{left:-7px}
+
+/* Swiper Fixes */
+.events-swiper {
+  overflow: hidden; /* prevent peeking */
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.event-img {
+  width: 100%;
+  height: 320px; /* fixed height for uniform look */
+  object-fit: cover;
+}
+</style>
+
+<!-- JS (init Swiper) -->
+<script>
+  var swiper = new Swiper(".events-swiper", {
+  slidesPerView: 1,
+  spaceBetween: 0,
+  loop: true,
+  centeredSlides: false,  // prevent shifting
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+  <!-- ======= GALLERY (filter + lightbox) ======= -->
+  <section id="gallery">
+    <div class="container-xl">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <span class="kicker">Gallery</span>
+        <h2 class="section-title mt-2">Moments that matter</h2>
+        <div class="d-inline-flex gap-2 mt-3">
+          <button class="btn btn-sm btn-outline-light filter-btn active" data-filter="*">All</button>
+        </div>
+      </div>
+
+      <div class="row g-3 gallery" id="isoGrid">
+        <div class="col-6 col-md-4 grid-item arts">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/CONNECT-05.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/CONNECT-05.webp" alt="arts"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item tech">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/cl_62.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/cl_62.webp" alt="tech"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/cl_66.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/cl_66.webp" alt="sports"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item arts">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/CONNECT-01.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/CONNECT-01.webp" alt="art2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item tech">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/campus-03.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/campus-03.webp" alt="tech2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/CONNECT-04.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/CONNECT-04.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/comedy.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/comedy.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/campus-05.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/campus-05.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/fashion-01.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/fashion-01.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/singing.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/singing.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/fashion-02.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/fashion-02.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/img04.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/img04.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/CONNECT-03.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/CONNECT-03.webp" alt="sports2"/></a></figure>
+        </div>
+        <div class="col-6 col-md-4 grid-item sports">
+          <figure class="rounded-2xl overflow-hidden glass"><a href="webp/CONNECT-02.webp" class="glightbox" data-gallery="g"><img class="w-100" src="webp/CONNECT-02.webp" alt="sports2"/></a></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TESTIMONIALS ======= -->
+<section id="testimonials" class="parallax testi-section">
+  <div class="container-xl py-5 position-relative z-10">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <span class="kicker">Voices</span>
+      <h2 class="section-title mt-2">What our alumni say</h2>
+    </div>
+    <div class="swiper testi-swiper glass rounded-2xl p-4">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <blockquote class="mb-0">
+            <p>“VALUED gave me confidence to perform live and release my first EP.”</p>
+            <footer class="small text-muted-80">— Aline, Singer </footer>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote class="mb-0">
+            <p>“Our team built a working app and pitched it to real investors at Demo Day.”</p>
+            <footer class="small text-muted-80">— Natrix, Tech Track</footer>
+          </blockquote>
+        </div>
+        <div class="swiper-slide">
+          <blockquote class="mb-0">
+            <p>“The mentorship was life‑changing. I found my voice as a leader.”</p>
+            <footer class="small text-muted-80">— Grace, Leadership Track</footer>
+          </blockquote>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Blurred Parallax Background for Testimonials */
+.testi-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('webp/image01.webp') center/cover no-repeat fixed;
+  filter: blur(8px) brightness(0.3); /* blur + dark overlay */
+  z-index: 1;
+}
+
+.testi-section .container-xl {
+  position: relative;
+  z-index: 2; /* keep content above background */
+}
+</style>
+
+
+
+
+  <!-- ======= PARTNERS / SUPPORT ======= -->
+  <section id="partners">
+    <div class="container-xl">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5" data-aos="fade-right">
+          <span class="kicker">Be a Partner</span>
+          <h2 class="section-title mt-2">Let’s build brighter futures — together</h2>
+          <p class="text-muted-80">Join a network of organizations investing in youth through sponsorships, mentorships and shared projects.</p>
+          <div class="d-flex gap-2 mb-3 flex-wrap">
+            <span class="badge badge-soft">Sponsorships</span>
+            <span class="badge badge-soft">Equipment</span>
+            <span class="badge badge-soft">Spaces</span>
+            <span class="badge badge-soft">Internships</span>
+          </div>
+          <a href="#contact" class="btn btn-neo rounded-pill">Become a Partner</a>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="glass rounded-2xl p-3 overflow-hidden">
+            <div class="marquee">
+              <img src="webp/ummurenge.PNG" height="46" alt="logo"/>
+              <img src="webp/ama.PNG" height="46" alt="logo"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Cards -->
+      <div class="row g-4 mt-4">
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="glass rounded-2xl p-4 h-100">
+            <i class="fa-solid fa-hand-holding-heart text-danger fs-3"></i>
+            <h5 class="mt-2">Sponsor a Student</h5>
+            <p class="text-muted-80 small">Fund tuition or equipment for a young talent to continue their journey.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="glass rounded-2xl p-4 h-100">
+            <i class="fa-solid fa-user-group text-info fs-3"></i>
+            <h5 class="mt-2">Volunteer & Mentor</h5>
+            <p class="text-muted-80 small">Share your experience through workshops, coaching and project reviews.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="glass rounded-2xl p-4 h-100">
+            <i class="fa-solid fa-building-columns text-warning fs-3"></i>
+            <h5 class="mt-2">Provide Space / Tools</h5>
+            <p class="text-muted-80 small">Offer venues, software licenses, instruments or production resources.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FAQ ======= -->
+<section id="faq" class="parallax faq-section">
+  <div class="container-xl py-5 position-relative z-10">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="kicker">FAQ</span>
+        <h2 class="section-title mt-2">Good questions, quick answers</h2>
+        <p class="text-muted-80">Everything about admissions, schedules and scholarships.</p>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="accordion" id="faqAcc">
+          <div class="accordion-item glass text-white rounded-2xl mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button text-white" type="button" data-bs-toggle="collapse" data-bs-target="#f1">How do I apply?</button>
+            </h2>
+            <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc">
+              <div class="accordion-body">Hit <em>Apply Now</em>, pick a Program, submit your Information or motivation. We’ll invite you for an interview.</div>
+            </div>
+          </div>
+          <div class="accordion-item glass text-white rounded-2xl mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">Are there scholarships?</button>
+            </h2>
+            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+              <div class="accordion-body">Yes — need‑based and merit awards from partners. Indicate interest in your application.</div>
+            </div>
+          </div>
+          <div class="accordion-item glass text-white rounded-2xl mb-2">
+            <h2 class="accordion-header">
+              <button class="accordion-button text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">Where is the campus?</button>
+            </h2>
+            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+              <div class="accordion-body">Kigali, Rwanda — with community hubs across the country and online tracks.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Blurred Parallax Background for FAQ */
+.faq-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('webp/LYN\ PHOTO\ STUDIO.._42.webp') center/cover no-repeat fixed;
+  filter: blur(8px) brightness(0.3); /* blur + dark overlay */
+  z-index: 1;
+}
+
+.faq-section .container-xl {
+  position: relative;
+  z-index: 2; /* keep content above background */
+}
+</style>
+
+
+
+
+
+
+
+<!-- ======= CONTACT ======= -->
+<section id="contact">
+  <div class="container-xl">
+    <div class="row g-4">
+      
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="kicker">Contact</span>
+        <h2 class="section-title mt-2">We’d love to hear from you</h2>
+        <p class="text-muted-80">Have questions, ideas or partnership offers? Send a note.</p>
+        <div class="glass rounded-2xl p-3">
+          <div class="d-flex align-items-center mb-2"><i class="fa-solid fa-envelope text-info me-2"></i> info@valedprogram.com</div>
+          <div class="d-flex align-items-center mb-2"><i class="fa-solid fa-phone text-warning me-2"></i> +25079 545 4671</div>
+          <div class="d-flex align-items-center"><i class="fa-solid fa-location-dot text-danger me-2"></i> 26G9 + 6H9,Kabuga-Gasabo, Rwanda</div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6" data-aos="fade-left">
+        <!-- Form connected to Formspree -->
+        <form class="glass rounded-2xl p-4" id="contactForm" action="https://formspree.io/f/xgvljjqj" method="POST" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6"><input class="form-control glass text-white" placeholder="Full name" name="name" required></div>
+            <div class="col-md-6"><input type="email" class="form-control glass text-white" placeholder="Email" name="email" required></div>
+            <div class="col-12"><input class="form-control glass text-white" placeholder="Subject" name="subject" required></div>
+            <div class="col-12"><textarea rows="5" class="form-control glass text-white" placeholder="Your message" name="message" required></textarea></div>
+            <div class="col-12 d-flex gap-2 align-items-center">
+              <button class="btn btn-neo rounded-pill" type="submit">Send Message</button>
+              <div id="formMsg" class="small text-success" style="display:none;">🎉 Your message has been sent successfully!</div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // AJAX submit to Formspree
+  const contactForm2 = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+
+  contactForm2.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent default submission
+    const formData = new FormData(contactForm2);
+
+    fetch(contactForm2.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        formMsg.style.display = 'block';
+        contactForm2.reset();
+      } else {
+        alert("Oops! There was a problem submitting your form");
+      }
+    }).catch(error => {
+      alert("Oops! There was a problem submitting your form");
+    });
+  });
+</script>
+
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="pt-5 pb-4 border-top" style="border-color:var(--border)!important">
+    <div class="container-xl">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="fw-bold">VALUED Program</h5>
+          <p class="text-muted-80">© <span id="year"></span> All rights reserved. Built to empower youth talents across Africa.</p>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-light btn-sm rounded-circle" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light btn-sm rounded-circle" href="https://www.instagram.com/vep__official?igsh=bnR1dHk4dXBpaXZw"><i class="fa-brands fa-instagram"></i></a>
+            <a class="btn btn-outline-light btn-sm rounded-circle" href="https://x.com/ValuEdProgram?t=u4OvuyxFNX9H7B3Ue9M4nw&s=09"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="btn btn-outline-light btn-sm rounded-circle" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-uppercase small">Explore</h6>
+          <ul class="list-unstyled link-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="text-uppercase small">Links</h6>
+          <ul class="list-unstyled link-list">
+            <li><a href="apply.html">How to apply</a></li>
+            <li><a href="campus.html">Campus</a></li>
+            <li><a href="contact us.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h6 class="text-uppercase small">Newsletter</h6>
+          <form id="newsForm" class="d-flex gap-2">
+            <input type="email" class="form-control glass text-white" placeholder="Your email" required>
+            <button class="btn btn-neo">Join</button>
+          </form>
+          <div id="newsMsg" class="small mt-2"></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= VIDEO MODAL ======= -->
+  <div class="modal fade" id="videoIntro" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass text-white rounded-2xl">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fa-solid fa-circle-play me-2 text-info"></i>Program Overview</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe src="https://player.vimeo.com/video/76979871?h=8272103f6e&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <button id="backToTop" class="btn btn-neo rounded-circle p-3"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+  <!-- ============== CDN JS ============== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- ============== App JS ============== -->
+  <script>
+    // ===== Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Navbar appearance on scroll
+    const nav = document.getElementById('mainNav');
+    const progressBar = document.getElementById('progressBar');
+    const backToTop = document.getElementById('backToTop');
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      nav.classList.toggle('nav-glow', y > 8);
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(100, Math.max(0, (y / docH) * 100));
+      progressBar.style.width = progress + '%';
+      backToTop.style.display = y > 600 ? 'inline-flex' : 'none';
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // ===== Smooth scroll for nav links
+    document.querySelectorAll('a.nav-link, a.btn').forEach(a => {
+      const href = a.getAttribute('href');
+      if(href && href.startsWith('#') && href.length > 1){
+        a.addEventListener('click', e => {
+          const target = document.querySelector(href);
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({behavior:'smooth', block:'start'});
+          }
+        });
+      }
+    });
+
+    // ===== Typed.js in hero
+    const typed = new Typed('#typed', {
+      strings: ['Show the World', 'Create. Build. Lead.', 'Shine with VALUED'],
+      typeSpeed: 60, backSpeed: 30, backDelay: 1200, loop: true
+    });
+
+    // ===== AOS init (reveal on scroll)
+    AOS.init({duration: 800, once: true, offset: 80});
+
+    // ===== Swiper sliders
+    new Swiper('.campus-swiper', { pagination: { el: '.swiper-pagination' }, loop:true, autoplay:{delay:3000} });
+    new Swiper('.events-swiper', { pagination: { el: '.events-swiper .swiper-pagination' }, loop:true, autoplay:{delay:4000} });
+    new Swiper('.testi-swiper', { pagination: { el: '.testi-swiper .swiper-pagination' }, loop:true, autoplay:{delay:3500} });
+
+    // ===== GLightbox (gallery)
+    const lightbox = GLightbox({ selector: '.glightbox' });
+
+    // ===== Isotope filtering
+    const grid = new Isotope('#isoGrid', { itemSelector: '.grid-item', layoutMode: 'masonry' });
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', (e)=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      const f = e.currentTarget.getAttribute('data-filter');
+      grid.arrange({ filter: f });
+    }));
+
+    // ===== Animated counters (when visible)
+    const inView = (el) => {
+      const r = el.getBoundingClientRect();
+      return r.top < window.innerHeight - 80 && r.bottom > 80;
+    };
+    const counters = document.querySelectorAll('.stat-number');
+    let counted = false;
+    const runCounters = () => {
+      if(counted) return;
+      const anyVisible = Array.from(counters).some(inView);
+      if(anyVisible){
+        counted = true;
+        counters.forEach(el=>{
+          const target = +el.dataset.count;
+          let cur = 0; const step = Math.max(1, Math.round(target/120));
+          const tick = () => {
+            cur += step; if(cur >= target){ el.textContent = target; } else { el.textContent = cur; requestAnimationFrame(tick); }
+          };
+          requestAnimationFrame(tick);
+        });
+      }
+    };
+    window.addEventListener('scroll', runCounters);
+    runCounters();
+
+    // ===== Back to top
+    backToTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --color-brand: #991b1b;
+  --color-brand-dark: #7f1d1d;
+  --color-brand-light: #b91c1c;
+  --color-brand-muted: #fef2f2;
+  --color-surface: #fafafa;
+  --color-muted: #64748b;
+  --radius-brand: 4px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-sans text-slate-800 antialiased bg-white overflow-x-hidden;
+  }
+
+  img {
+    @apply rounded-brand;
+  }
+}
+
+@layer utilities {
+  .container-main {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-pad {
+    @apply py-14 sm:py-16 lg:py-20;
+  }
+
+  .rounded-brand {
+    border-radius: var(--radius-brand);
+  }
+
+  .card {
+    @apply border border-slate-100 bg-white shadow-sm;
+  }
+}

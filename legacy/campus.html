@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VALUED Program - Campus Experience</title>
+  <link rel="icon" type="image//png" href="webp/logo02.webp">
+  <!-- CDNs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --yellow:#FFD700;
+      --red:#a71c33;
+      --black:#0b0d16;
+      --glass:rgba(255,255,255,.06);
+      --muted:rgba(255,255,255,.65);
+      --border:rgba(255,255,255,.14);
+    }
+    body {
+      font-family: "Poppins", system-ui, sans-serif;
+      background: var(--black);
+      color:#fff;
+      scroll-behavior:smooth;
+    }
+    .container-xl {max-width:1200px;margin:auto;padding:0 1rem;}
+    .btn-neo {
+      background: linear-gradient(135deg,var(--yellow),var(--red));
+      border:0;color:#000;font-weight:600;transition:.3s;
+    }
+    .btn-neo:hover {filter:brightness(1.1);transform:translateY(-3px);}
+    .glass {background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border);}
+    .rounded-2xl {border-radius:1.25rem;}
+    .shadow-soft {box-shadow:0 10px 40px rgba(0,0,0,.35);}
+    .text-muted-80 {color:var(--muted);}
+    .section-title {font-weight:800;color:var(--yellow);}
+    .kicker {font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+    section {padding:80px 0;}
+
+    /* Navbar */
+    .navbar {transition:all .25s ease;}
+    .navbar .nav-link {color:#fff;opacity:.85;transition:.3s;}
+    .navbar .nav-link:hover, .navbar .nav-link.active {opacity:1;color:var(--yellow);}
+    .nav-glow {box-shadow:0 6px 24px rgba(255,215,0,.25);}
+
+    /* Hero */
+    .hero {
+      position:relative;min-height:90vh;
+      display:grid;place-items:center;text-align:center;
+      background:url("webp/cl_66.webp") no-repeat center/cover;
+    }
+    .hero::before {
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.65));
+    }
+    .hero-inner {position:relative;z-index:2;max-width:900px;padding:2rem;}
+    .hero h1 {font-weight:900;font-size:3rem;margin-bottom:1rem;animation:fadeInUp 1.2s;}
+    .hero p {color:rgba(255,255,255,.85);animation:fadeInUp 1.4s;}
+    @keyframes fadeInUp {
+      0%{opacity:0;transform:translateY(40px);}
+      100%{opacity:1;transform:translateY(0);}
+    }
+
+    /* Campus Experience */
+    .program-card {
+      background:var(--glass);
+      border:1px solid var(--border);
+      padding:2rem;
+      border-radius:1rem;
+      transition:.4s;
+      text-align:center;
+    }
+    .program-card img {
+      width:100%;height:200px;object-fit:cover;
+      border-radius:.75rem;margin-bottom:1rem;
+      transition:transform .5s;
+    }
+    .program-card:hover {transform:translateY(-8px);box-shadow:0 12px 30px rgba(255,215,0,.25);}
+    .program-card:hover img {transform:scale(1.05);}
+
+    /* Gallery */
+    .gallery-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;}
+    .gallery-grid img {width:100%;height:220px;object-fit:cover;border-radius:.75rem;transition:.4s;}
+    .gallery-grid img:hover {transform:scale(1.05);}
+
+    /* Testimonials */
+    .testimonial {padding:2rem;background:var(--glass);border-radius:1rem;}
+    .testimonial p {font-size:1rem;color:var(--muted);}
+    .testimonial .author {margin-top:1rem;font-weight:600;color:var(--yellow);}
+
+    /* Contact */
+    .contact-card {
+      background:var(--glass);
+      padding:2rem;
+      border-radius:1rem;
+      border:1px solid var(--border);
+    }
+    iframe {width:100%;height:300px;border:0;border-radius:1rem;}
+
+    /* Footer */
+    footer .link-list a{color:var(--muted);text-decoration:none;transition:.3s;}
+    footer .link-list a:hover{color:var(--yellow);}
+    footer {background:#0b0d16;}
+
+    @media(max-width:767.98px){
+      .hero h1 {font-size:2rem;}
+      .hero-inner {padding:1rem;}
+      section {padding:60px 0;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top glass">
+  <div class="container-xl">
+    <a class="navbar-brand fw-bold" href="index.html">VALUED</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navCollapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="impact.html">Impact</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+      </ul>
+      <a href="apply.html" class="btn btn-neo ms-lg-3 rounded-pill px-4 py-2">Join Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Welcome to VALUED</p>
+    <h1>Campus Experience That Empowers</h1>
+    <p class="lead">Explore leadership, innovation, and community activities that make your university journey unforgettable.</p>
+    <a href="#campus" class="btn btn-neo rounded-pill px-4 py-2 mt-3">Discover Experience</a>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container-xl">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <img src="webp/campus-03.webp" class="img-fluid rounded-2xl shadow-soft" alt="About us">
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <span class="kicker">Who We Are</span>
+        <h2 class="section-title">About Campus Life</h2>
+        <p class="text-muted-80">We design unforgettable experiences for students — from innovation labs to leadership programs and cultural events. Our goal is to prepare you for life inside and outside the classroom.</p>
+        <a href="#gallery" class="btn btn-neo rounded-pill px-4 py-2">See More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS EXPERIENCE -->
+<section id="campus">
+  <div class="container-xl">
+    <div class="text-center mb-5">
+      <span class="kicker">Our Life</span>
+      <h2 class="section-title">Campus Experience</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in">
+        <div class="program-card">
+          <img src="webp/img02.webp" alt="Leadership">
+          <h5 class="mt-3">Leadership Journey</h5>
+          <p class="text-muted-80">Take part in transformative activities that shape tomorrow’s leaders.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
+        <div class="program-card">
+          <img src="webp/workshop-01.webp" alt="Innovation">
+          <h5 class="mt-3">Innovation Hubs</h5>
+          <p class="text-muted-80">Hands-on labs designed for creativity, design thinking, and entrepreneurship.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="program-card">
+          <img src="webp/CONNECT-04.webp" alt="Community">
+          <h5 class="mt-3">Community Life</h5>
+          <p class="text-muted-80">Projects, clubs, and events that bring students together beyond academics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container-xl">
+    <div class="text-center mb-5">
+      <span class="kicker">Moments</span>
+      <h2 class="section-title">Gallery</h2>
+    </div>
+    <div class="gallery-grid">
+      <img src="webp/campus -01.webp" alt="Gallery 1">
+      <img src="webp/campus-02.webp" alt="Gallery 2">
+      <img src="webp/campus-03.webp" alt="Gallery 3">
+      <img src="webp/campus-04.webp" alt="Gallery 4">
+      <img src="webp/CONNECT-01.webp" alt="Gallery 5">
+      <img src="webp/cl.webp" alt="Gallery 6">
+      <img src="webp/cl_19.webp" alt="Gallery 5">
+      <img src="webp/cl_66.webp" alt="Gallery 6">
+      <img src="webp/CONNECT-03.webp" alt="Gallery 1">
+      <img src="webp/craft.webp" alt="Gallery 2">
+      <img src="webp/comedy.webp" alt="Gallery 3">
+      <img src="webp/LYN PHOTO STUDIO.._33.webp" alt="Gallery 4">
+      <img src="webp/LYN PHOTO STUDIO.._50.webp" alt="Gallery 5">
+      <img src="webp/CONNECT-02.webp" alt="Gallery 6">
+      <img src="webp/logo02.webp" alt="Gallery 5">
+      <img src="webp/img01.webp" alt="Gallery 6">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container-xl">
+    <div class="text-center mb-5">
+      <span class="kicker">What They Say</span>
+      <h2 class="section-title">Voices of Change</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up">
+        <div class="testimonial">
+          <p>"Campus life gave me confidence and leadership skills that I use every day!"</p>
+          <div class="author">— Alice, Student Leader</div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="testimonial">
+          <p>"Innovation hubs let me experiment and build my first real startup idea."</p>
+          <div class="author">— Brian, Innovator</div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="testimonial">
+          <p>"The community clubs created friendships and memories I’ll never forget."</p>
+          <div class="author">— Claire, Graduate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container-xl">
+    <div class="text-center mb-5">
+      <span class="kicker">Reach Out</span>
+      <h2 class="section-title">Contact Us</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="contact-card">
+          <h5>Send a Message</h5>
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control glass text-white" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control glass text-white" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control glass text-white" placeholder="Message" rows="4" required></textarea>
+            </div>
+            <button class="btn btn-neo px-4 py-2 rounded-pill">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.123456789!2d30.058!3d-1.940!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x123456789abcdef!2sLight+Center!5e0!3m2!1sen!2srw!4v1690000000000!5m2!1sen!2srw"
+          width="100%"
+          height="450"
+          style="border:0; border-radius:1rem;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="pt-5 pb-4 border-top" style="border-color:var(--border)!important">
+  <div class="container-xl">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5 class="fw-bold">VALUED Campus Experience</h5>
+        <p class="text-muted-80">© <span id="year"></span> All rights reserved. Empowering youth through campus life.</p>
+        <div class="d-flex gap-2">
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="https://www.instagram.com/vep__official?igsh=bnR1dHk4dXBpaXZw"><i class="fa-brands fa-instagram"></i></a>
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="https://x.com/ValuEdProgram?t=u4OvuyxFNX9H7B3Ue9M4nw&s=09"><i class="fa-brands fa-x-twitter"></i></a>
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-uppercase small">Explore</h6>
+        <ul class="list-unstyled link-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#campus">Campus Experience</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-uppercase small">Admissions</h6>
+        <ul class="list-unstyled link-list">
+          <li><a href="#faq">How to apply</a></li>
+          <li><a href="#partners">Scholarships</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-uppercase small">Newsletter</h6>
+        <form id="newsForm" class="d-flex gap-2">
+          <input type="email" class="form-control glass text-white" placeholder="Your email" required>
+          <button class="btn btn-neo">Join</button>
+        </form>
+        <div id="newsMsg" class="small mt-2"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration:800, once:true });
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

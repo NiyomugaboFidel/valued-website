@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VALUED — Impact & Stories</title>
+  <link rel="icon" type="image//png" href="webp/logo02.webp">
+  <!-- Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+
+  <!-- ====== Theme CSS (based on your variables) ====== -->
+  <style>
+    :root{
+      --yellow:#FFD700;
+      --red:#a71c33;
+      --black:#0b0d16;
+      --glass:rgba(255,255,255,.06);
+      --muted:rgba(255,255,255,.65);
+      --border:rgba(255,255,255,.14);
+      --max-width:1200px;
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;
+      background:var(--black);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Container */
+    .container-xl{max-width:var(--max-width);margin-left:auto;margin-right:auto;padding:0 1rem}
+
+    /* Buttons */
+    .btn-neo{
+      background:linear-gradient(135deg,var(--yellow),var(--red));
+      border:0;color:#000;font-weight:700;
+      box-shadow:0 6px 18px rgba(167,28,51,.12);
+    }
+    .btn-neo:hover{filter:brightness(1.06);transform:translateY(-2px)}
+
+    /* Glass */
+    .glass{
+      background:var(--glass);
+      backdrop-filter:blur(12px);
+      border:1px solid var(--border);
+    }
+    .rounded-2xl{border-radius:1.25rem}
+    .shadow-soft{box-shadow:0 10px 40px rgba(0,0,0,.35)}
+
+    /* Typography utilities */
+    .kicker{font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+    .section-title{font-weight:800;letter-spacing:.3px;color:var(--yellow);margin:0 0 .75rem 0}
+    .text-muted-80{color:var(--muted)}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:1.25rem 0;}
+
+    /* Navbar */
+    /* Added navbar-dark to HTML as well to keep toggler icon stable */
+    nav.navbar{position:fixed;top:0;left:0;right:0;z-index:999;backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.03)}
+    .navbar .nav-link{color:#fff;opacity:.9}
+    .navbar .nav-link:hover,.navbar .nav-link.active{color:var(--yellow);opacity:1}
+
+    /* Progress bar */
+    #progressBar{
+      position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--yellow),var(--red));width:0;z-index:2000;
+    }
+
+    /* Hero */
+.hero {
+  position: relative;
+  min-height: 90vh; /* taller hero */
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  /* Background image */
+  background-image: url('webp/INTERGE-03.webp');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* parallax-like effect */
+  overflow: hidden;
+
+  margin-top: 70px; /* leave space for fixed navbar */
+  animation: heroZoom 20s ease-in-out infinite alternate; /* smooth zoom */
+}
+
+/* Overlay for readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,13,22,.55), rgba(11,13,22,.7));
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+/* Inner content */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  padding: 4rem 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+  font-weight: 900;
+  color: #fff;
+}
+
+.hero p.lead {
+  color: var(--muted);
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Subtle parallax: JS can update background-position */
+.hero-bg-parallax {}
+
+/* Smooth background zoom animation */
+@keyframes heroZoom {
+  0%   { background-size: 100%; }
+  100% { background-size: 110%; }
+}
+
+/* Section */
+section {
+  padding: 80px 0;
+}
+@media (max-width: 991.98px) {
+  section { padding: 60px 0; }
+  .hero h1 { font-size: 2.2rem; }
+}
+@media (max-width: 575.98px) {
+  section { padding: 40px 0; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p.lead { font-size: 1rem; }
+}
+
+
+    /* Impact highlights */
+    .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    @media (max-width:991.98px){.impact-grid{grid-template-columns:1fr}}
+    .impact-card{padding:1.25rem;border-radius:12px;border:1px solid var(--border);transition:transform .35s ease,box-shadow .35s ease}
+    .impact-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+
+    .impact-card img{border-radius:10px;height:220px;object-fit:cover}
+
+    /* Case studies: large feature with slider */
+.case {
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width:1199.98px) {
+  .case {
+    grid-template-columns: 1fr;
+  }
+}
+
+.case .case-body {
+  padding: 1rem;
+}
+
+.case .case-slider {
+  min-height: 300px; /* keeps layout stable */
+  overflow: hidden; /* prevents slide “shake” */
+}
+
+.case .case-slider .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.case .case-slider img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Featured swiper */
+.featured-swiper,
+.comp-swiper,
+.workshop-swiper {
+  min-height: 300px; 
+}
+
+.featured-swiper .swiper-slide img,
+.comp-swiper .swiper-slide img,
+.workshop-swiper .swiper-slide img {
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+    @media (max-width:991.98px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:575.98px){.gallery-grid{grid-template-columns:1fr}}
+    .gallery-grid img{height:220px;object-fit:cover;width:100%}
+
+    /* Stats counters */
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    @media (max-width:991.98px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+    .stat-tile{padding:1.25rem;border-radius:12px;border:1px solid var(--border);text-align:center}
+    .stat-number{font-size:2.2rem;font-weight:900;color:var(--yellow)}
+    .stat-label{color:var(--muted);margin-top:.5rem}
+
+    /* TIMELINE CSS */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--yellow), var(--red));
+  transform: translateX(-50%);
+}
+
+.t-item {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2rem;
+}
+
+.t-left {
+  left: 0;
+  text-align: right;
+}
+
+.t-right {
+  left: 50%;
+}
+
+.t-item .dot {
+  position: absolute;
+  top: 18px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--yellow), var(--red));
+  border: 3px solid var(--black);
+  box-shadow: 0 0 0 8px rgba(255, 215, 0, 0.12);
+}
+
+.t-left .dot {
+  right: -8px;
+}
+
+.t-right .dot {
+  left: -8px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 991.98px) {
+  .timeline::before {
+    left: 10px;
+  }
+
+  .t-item {
+    width: 100%;
+    padding-left: 48px;
+    padding-right: 1rem;
+  }
+
+  .t-left,
+  .t-right {
+    text-align: left;
+    left: 0;
+  }
+
+  .t-left .dot,
+  .t-right .dot {
+    left: 3px;
+    right: auto;
+  }
+}
+
+
+    /* partners marquee */
+    .marquee{display:flex;gap:2rem;align-items:center;overflow:hidden;padding:1rem 0}
+    .marquee .track{display:flex;gap:2rem;animation:marq 28s linear infinite}
+    .marquee img{height:40px;opacity:.9;filter:grayscale(.1)}
+    /* animate -100% and duplicate content in HTML ensures seamless loop */
+    @keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+    /* testimonials / swiper */
+    .testi-card{padding:1.2rem;border-radius:12px;border:1px solid var(--border);min-height:150px}
+    .testi-card img{height:150px;object-fit:cover;width:100%}
+
+    /* contact CTA */
+    .cta{padding:2rem;border-radius:12px;border:1px solid var(--border);display:flex;flex-direction:row;gap:1rem;align-items:center;justify-content:space-between}
+    @media (max-width:767.98px){.cta{flex-direction:column;text-align:center}}
+
+    /* modal overlay (case details) */
+    .modal-overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:2200;padding:1rem;
+    }
+    .modal-window{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border-radius:12px;padding:1.25rem;max-width:1000px;width:100%;border:1px solid var(--border)}
+    .modal-close{position:absolute;right:18px;top:18px;background:transparent;border:0;color:#fff;font-size:1.6rem}
+
+    /* smooth transitions */
+    .fade-in {opacity:0;transform:translateY(10px);transition:all .7s ease}
+    .fade-in.show{opacity:1;transform:none}
+
+      /* ======= Footer ======= */
+      footer .link-list a{color:var(--muted);text-decoration:none}
+    footer .link-list a:hover{color:var(--yellow)}
+
+    /* tiny helpers */
+    .muted-small{color:var(--muted);font-size:.95rem}
+
+    /*
+      Stabilization helpers for animation conflicts:
+      - AOS and other transforms should avoid triggering expensive repaints.
+    */
+    [data-aos] {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+
+    #backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--yellow), var(--red));
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all .3s ease;
+  z-index: 9999; /* <-- keeps button above everything */
+}
+
+
+    @media (max-width:767.98px){
+  footer .row {
+    text-align: center;
+    justify-content: center;
+  }
+
+  footer .col-md-4,
+  footer .col-md-2,
+  footer .col-md-3 {
+    margin-bottom: 1.5rem;
+  }
+
+  footer .link-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+
+  footer .link-list a {
+    display: block;
+  }
+
+  footer .d-flex.gap-2 {
+    justify-content: center !important;
+  }
+
+  footer form#newsForm {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  footer form#newsForm input,
+  footer form#newsForm button {
+    width: 100%;
+  }
+
+  footer #newsMsg {
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- progress bar -->
+  <div id="progressBar"></div>
+
+    <!-- ======= NAVBAR ======= -->
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top glass">
+      <div class="container-xl">
+        <a class="navbar-brand fw-bold" href="index.html">
+           VALUED 
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navCollapse">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="campus.html">Campus</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+          </ul>
+          <a href="apply.html" class="btn btn-neo ms-lg-3 rounded-pill px-4 py-2">Apply Now</a>
+        </div>
+      </div>
+    </nav>
+
+  <!-- HERO -->
+  <header class="hero hero-bg-parallax">
+    <div class="hero-inner container-xl">
+      <p class="kicker" data-aos="fade-down">Impact Report</p>
+      <h1 data-aos="fade-up">We partner, organize, and teach — turning potential into opportunity</h1>
+      <p class="lead text-muted-80" data-aos="fade-up" data-aos-delay="150">
+        From the national <strong>Intore Mu Biruhuko</strong> partnership to campus workshops and nationwide competitions — here's a detailed view of what we achieved together.
+      </p>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <a class="btn btn-neo rounded-pill me-3" href="#cases">Explore Case Studies</a>
+        <a class="btn btn-outline-light rounded-pill" href="#contact">Partner With Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- IMPACT HIGHLIGHTS -->
+  <section id="impact">
+    <div class="container-xl">
+      <div class="text-center mb-4">
+        <p class="kicker" data-aos="fade-up">What we've done</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="80">Impact Highlights</h2>
+        <p class="text-muted-80" data-aos="fade-up" data-aos-delay="160">Selected projects and activities that showcase the breadth and depth of our programs across Rwanda.</p>
+      </div>
+
+      <div class="impact-grid" data-aos="fade-up" data-aos-delay="260">
+        <!-- Govt partnership -->
+        <div class="impact-card glass">
+          <img src="webp/cl_68.webp" alt="Government partnership">
+          <h5 class="mt-3">Government — Intore Mu Biruhuko</h5>
+          <p class="text-muted-80 small">We collaborated with the Ministry to deliver cultural and youth engagement programs reaching thousands. Roles included program design, on-ground logistics, and youth talent showcases.</p>
+          <div class="mt-2 d-flex gap-2">
+            <button class="btn btn-outline-light btn-sm" data-open-case="gov">View Details</button>
+            <a class="btn btn-neo btn-sm" href="#contact">Partner</a>
+          </div>
+        </div>
+
+        <!-- Competitions -->
+        <div class="impact-card glass">
+          <img src="webp/campus-03.webp" alt="Competitions">
+          <h5 class="mt-3">Nationwide Competitions for Kids</h5>
+          <p class="text-muted-80 small">Organized multi-discipline competitions (arts, tech, sports) with age-bracketed heats and national finals. Focus on inclusion, mentorship, and celebration.And those who won got reward.</p>
+          <div class="mt-2 d-flex gap-2">
+            <button class="btn btn-outline-light btn-sm" data-open-case="comp">View Details</button>
+            <a class="btn btn-neo btn-sm" href="#contact">Volunteer</a>
+          </div>
+        </div>
+
+        <!-- Workshops -->
+        <div class="impact-card glass">
+          <img src="webp/workshop.webp" alt="Workshops">
+          <h5 class="mt-3">Campus Workshops & Labs</h5>
+          <p class="text-muted-80 small">Delivered hands-on workshops on storytelling, coding, and leadership at universities and community hubs — training trainers and building local capacity.we also focus on tourism , Banking and Taxation</p>
+          <div class="mt-2 d-flex gap-2">
+            <button class="btn btn-outline-light btn-sm" data-open-case="ws">View Details</button>
+            <a class="btn btn-neo btn-sm" href="#contact">Run a Workshop</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="cases">
+    <div class="container-xl">
+      <div class="text-center mb-5">
+        <p class="kicker" data-aos="fade-up">Deep Dives</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="80">Case Studies & Stories</h2>
+      </div>
+
+      <!-- Case 1: Intore Mu Biruhuko (big feature) -->
+      <div class="case glass rounded-2xl p-3 mb-5" data-aos="fade-up">
+        <div class="case-slider">
+          <!-- Swiper -->
+          <div class="swiper featured-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="webp/cl_19.webp" alt=""></div>
+              <div class="swiper-slide"><img src="webp/cl_66.webp" alt=""></div>
+              <div class="swiper-slide"><img src="webp/cl_68.webp" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <div class="case-body">
+          <h3>Intore Mu Biruhuko — National Cultural Collaboration</h3>
+          <p class="text-muted-80">Our partnership with government agencies focused on youth outreach through cultural festivals. We supported selection, training, and staging for hundreds of youth performers; produced logistics, safety, and mentorship plans; and ran public-facing campaigns that amplified participation.</p>
+
+          <ul class="muted-small">
+            <li><strong>Reach:</strong> 12,000+ attendees across 6 provinces</li>
+            <li><strong>Activities:</strong> talent showcases, mentorship circles, capacity workshops</li>
+            <li><strong>Outcome:</strong> 120 youth selected for regional artist development cohorts</li>
+          </ul>
+
+          <div class="mt-3 d-flex flex-wrap gap-2">
+            <button class="btn btn-neo" data-open-case="gov">Read Full Story</button>
+            <a class="btn btn-outline-light" href="#gallery">View Photos</a>
+            <button class="btn btn-outline-light" onclick="openModal('gov')">Open Gallery</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: Competitions -->
+      <div class="case glass rounded-2xl p-3 mb-5" data-aos="fade-up" data-aos-delay="120">
+        <div class="case-body order-2 order-lg-1">
+          <h3>Competitions — Discovering Young Talent</h3>
+          <p class="text-muted-80">We designed regional to national competitions focusing on fairness, coaching, and stage experience. Events included tech hackathons for kids, arts showcases, and sports tournaments with community engagement.</p>
+          <ul class="muted-small">
+            <li><strong>Participants:</strong> 8,400 children (ages 7–18)</li>
+            <li><strong>Disciplines:</strong> coding, robotics, music, dance, athletics</li>
+            <li><strong>Support:</strong> judges, mentorship, prizes, follow-up pathways</li>
+          </ul>
+          <div class="mt-3 d-flex gap-2">
+            <button class="btn btn-neo" data-open-case="comp">Explore Competitions</button>
+            <button class="btn btn-outline-light" onclick="openModal('comp')">Competition Gallery</button>
+          </div>
+        </div>
+
+        <div class="case-slider order-1 order-lg-2">
+          <div class="swiper comp-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="webp/comedy.webp" alt=""></div>
+              <div class="swiper-slide"><img src="webp/drama.webp" alt=""></div>
+              <div class="swiper-slide"><img src="webp/singing.webp" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 3: Workshops -->
+      <div class="case glass rounded-2xl p-3 mb-5" data-aos="fade-up" data-aos-delay="240">
+        <div class="case-slider">
+          <div class="swiper workshop-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="webp/workshop-01.webp" alt=""></div>
+              <div class="swiper-slide"><img src="webp/workshop-02.webp" alt=""></div>
+              <div class="swiper-slide"><img src="webp/workshp-03.webp" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <div class="case-body">
+          <h3>Campus Workshops — Building Skills & Leadership</h3>
+          <p class="text-muted-80">We ran hybrid workshops (in-person + online) covering storytelling, technical skills, leadership, and portfolio development. Workshops were co-facilitated with industry partners and local universities.</p>
+          <ul class="muted-small">
+            <li><strong>Format:</strong> weekend intensive, semester modules, mentorship track</li>
+            <li><strong>Trainers:</strong> industry experts, alumni mentors</li>
+            <li><strong>Result:</strong> participant portfolio growth and internship placements</li>
+          </ul>
+
+          <div class="mt-3 d-flex gap-2">
+            <button class="btn btn-neo" data-open-case="ws">View Workshop Reports</button>
+            <button class="btn btn-outline-light" onclick="openModal('ws')">Open Photos</button>
+          </div>
+        </div>
+
+        
+      </div>
+      <!-- Case 3: Connect & Cheers -->
+<div class="case glass rounded-2xl p-3 mb-5" data-aos="fade-up" data-aos-delay="240">
+  <div class="case-slider">
+    <div class="swiper cheers-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="webp/CONNECT-02.webp" alt="Connect & Cheers Talent Show"></div>
+        <div class="swiper-slide"><img src="webp/CONNECT-04.webp" alt="Football Match Screening"></div>
+        <div class="swiper-slide"><img src="webp/CONNECT-01.webp" alt="Movie Night Fun"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <div class="case-body">
+    <h3>Connect & Cheers — Monthly Fun & Talents</h3>
+    <p class="text-muted-80">
+      Connect & Cheers is our monthly event that brings people together to celebrate creativity, enjoy football matches, watch movies, and discover CAS talents. It’s a night of fun, energy, and community where everyone is welcome!
+    </p>
+    <ul class="muted-small">
+      <li><strong>Activities:</strong> talent showcases, live football screenings, movie nights</li>
+      <li><strong>Audience:</strong> students, friends, and the community</li>
+      <li><strong>Goal:</strong> to create unforgettable moments and connect people through entertainment</li>
+    </ul>
+
+    <div class="mt-3 d-flex gap-2">
+      <button class="btn btn-neo" data-open-case="cheers">View Event Highlights</button>
+      <button class="btn btn-outline-light" onclick="openModal('cheers')">Open Photos</button>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section id="gallery" class="gallery">
+    <div class="container-xl">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <p class="kicker">Visual Stories</p>
+        <h2 class="section-title">Impact Gallery</h2>
+      </div>
+
+      <div class="gallery-grid" data-aos="fade-up" data-aos-delay="120">
+        <figure><img src="webp/cl_19.webp" alt=""></figure>
+        <figure><img src="webp/cl_62.webp" alt=""></figure>
+        <figure><img src="webp/CONNECT-01.webp" alt=""></figure>
+        <figure><img src="webp/CONNECT-04.webp" alt=""></figure>
+        <figure><img src="webp/workshop-01.webp" alt=""></figure>
+        <figure><img src="webp/workshop.webp" alt=""></figure>
+        <figure><img src="webp/football-01.webp" alt=""></figure>
+        <figure><img src="webp/LYN PHOTO STUDIO.._33.webp" alt=""></figure>
+        <figure><img src="webp/drama-01.webp" alt=""></figure>
+        <figure><img src="webp/CONNECT-05.webp" alt=""></figure>
+        <figure><img src="webp/modern-02.webp" alt=""></figure>
+        <figure><img src="webp/INTERGE-03.webp" alt=""></figure>
+        <figure><img src="webp/INTERGE-01.webp" alt=""></figure>
+        <figure><img src="webp/CONNECT-03.webp" alt=""></figure>
+        <figure><img src="webp/CONNECT-02.webp" alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / COUNTERS -->
+  <section id="stats">
+    <div class="container-xl">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <p class="kicker">Numbers that matter</p>
+        <h2 class="section-title">Our Reach</h2>
+      </div>
+
+      <div class="stats-grid" data-aos="fade-up" data-aos-delay="120">
+        <div class="stat-tile glass">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Kids Reached</div>
+        </div>
+        <div class="stat-tile glass">
+          <div class="stat-number" data-target="1">0</div>
+          <div class="stat-label">Competitions Organized</div>
+        </div>
+        <div class="stat-tile glass">
+          <div class="stat-number" data-target="8">0</div>
+          <div class="stat-label">Workshops Held</div>
+        </div>
+        <div class="stat-tile glass">
+          <div class="stat-number" data-target="2">0</div>
+          <div class="stat-label">Partners Engaged</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE SECTION -->
+<section id="timeline">
+  <div class="container-xl">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <p class="kicker">Milestones</p>
+      <h2 class="section-title">Year by Year</h2>
+    </div>
+
+    <div class="timeline" data-aos="fade-up" data-aos-delay="120">
+      <div class="t-item t-left">
+        <div class="dot"></div>
+        <h5>2025 — Intore Mubiruhuko Year</h5>
+        <p class="text-muted-80">Step into the rhythm of Rwanda! Our Traditional Dance program connects children to their cultural roots through joyful movement, drumming, and storytelling.</p>
+      </div>
+      <div class="t-item t-right">
+        <div class="dot"></div>
+        <h5>2020 — Intercell Competion</h5>
+        <p class="text-muted-80">Step into the rhythm of Rwanda! Our talent-show  program connects children to their cultural roots through joyful movement, drumming, and storytelling.</p>
+      </div>
+      <div class="t-item t-left">
+        <div class="dot"></div>
+        <h5>2025 — Tourism Workshop</h5>
+        <p class="text-muted-80">Step into the rhythm of Rwanda Tourism !  connects children to their country roots through joyful learning what can help them .</p>
+      </div>
+      <div class="t-item t-right">
+        <div class="dot"></div>
+        <h5>Monthly Events — Connect and Cheers</h5>
+        <p class="text-muted-80">connect and cheers is any events for community and talent-show it hepls in developing the young mind talents and show their movements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- PARTNERS MARQUEE -->
+  <section id="partners">
+    <div class="container-xl">
+      <div class="text-center mb-3">
+        <p class="kicker" data-aos="fade-up">Collaborators</p>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="80">Our Partners</h2>
+      </div>
+      <div class="marquee glass rounded-2xl p-3" data-aos="fade-up" data-aos-delay="160">
+        <div class="track">
+          <!-- duplicate track to loop seamlessly (keeps two sets so -100% moves smoothly) -->
+          <img src="webp/ummurenge.PNG" alt="Partner">
+          <img src="webp/ama.PNG" alt="Partner">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (Swiper) -->
+  <section id="testimonials">
+    <div class="container-xl">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <p class="kicker">Voices</p>
+        <h2 class="section-title">What People Say</h2>
+      </div>
+
+      <div class="swiper testi-swiper" data-aos="fade-up" data-aos-delay="120">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><div class="testi-card glass"><p>“VALUED helped us find confidence — the coaching and showcase were life-changing.”</p><div class="muted-small mt-2">— Aline, Music Track</div></div></div>
+          <div class="swiper-slide"><div class="testi-card glass"><p>“Our students loved the hackathon — many built real projects and got internships.”</p><div class="muted-small mt-2">— Eric, Tech Teacher</div></div></div>
+          <div class="swiper-slide"><div class="testi-card glass"><p>“The Intore Mu Biruhuko event gave our rural youth a national platform.”</p><div class="muted-small mt-2">— Local Leader</div></div></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section id="contact">
+    <div class="container-xl">
+      <div class="cta glass shadow-soft" data-aos="fade-up">
+        <div>
+          <h3 class="section-title">Join the Movement</h3>
+          <p class="text-muted-80">Partner with us to deliver workshops, sponsor competitions or support youth in your community.</p>
+        </div>
+        <div class="d-flex gap-2 align-items-center">
+          <a class="btn btn-neo rounded-pill px-4 py-2" href="contact us.html">Contact Us</a>
+          <a class="btn btn-outline-light rounded-pill" href="contact us.html">Partner With Us</a>
+        </div>
+      </div>
+
+      <!-- contact form -->
+      <div id="contactForm" class="glass rounded-2xl p-4 mt-4">
+        <form id="impactContact" class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label small text-muted-80">Full Name</label>
+            <input class="form-control glass text-white" placeholder="Your name" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small text-muted-80">Email</label>
+            <input type="email" class="form-control glass text-white" placeholder="name@domain.com" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label small text-muted-80">Message</label>
+            <textarea class="form-control glass text-white" rows="4" placeholder="Tell us how you'd like to help..."></textarea>
+          </div>
+          <div class="col-12 text-end">
+            <button class="btn btn-neo">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+ <!-- ======= FOOTER ======= -->
+ <footer class="pt-5 pb-4 border-top" style="border-color:var(--border)!important">
+  <div class="container-xl">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5 class="fw-bold">VALUED Program</h5>
+        <p class="text-muted-80">© <span id="year"></span> All rights reserved. Built to empower youth talents across Africa.</p>
+        <div class="d-flex gap-2">
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="https://www.instagram.com/vep__official?igsh=bnR1dHk4dXBpaXZw"><i class="fa-brands fa-instagram"></i></a>
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="https://x.com/ValuEdProgram?t=u4OvuyxFNX9H7B3Ue9M4nw&s=09"><i class="fa-brands fa-x-twitter"></i></a>
+          <a class="btn btn-outline-light btn-sm rounded-circle" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-uppercase small">Explore</h6>
+        <ul class="list-unstyled link-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-uppercase small">Admissions</h6>
+        <ul class="list-unstyled link-list">
+          <li><a href="#faq">How to apply</a></li>
+          <li><a href="#partners">Scholarships</a></li>
+          <li><a href="#tracks">Tracks</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="text-uppercase small">Newsletter</h6>
+        <form id="newsForm" class="d-flex gap-2">
+          <input type="email" class="form-control glass text-white" placeholder="Your email" required>
+          <button class="btn btn-neo">Join</button>
+        </form>
+        <div id="newsMsg" class="small mt-2"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<button id="backToTop" class="btn btn-neo rounded-circle p-3"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+<script>
+  // Progress Bar + Back To Top
+  document.addEventListener("DOMContentLoaded", () => {
+    const progressBar = document.getElementById("progressBar");
+    const backToTop = document.getElementById("backToTop");
+  
+    // Update progress bar on scroll
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = progress + "%";
+  
+      // Show back-to-top button after scrolling 300px
+      if (scrollTop > 300) {
+        backToTop.style.opacity = "1";
+        backToTop.style.visibility = "visible";
+        backToTop.style.transform = "translateY(0)";
+      } else {
+        backToTop.style.opacity = "0";
+        backToTop.style.visibility = "hidden";
+        backToTop.style.transform = "translateY(20px)";
+      }
+    });
+  
+    // Smooth scroll to top
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+  </script>
+
+
+
+  <!-- Modal overlay for case details / galleries -->
+  <div id="caseModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-window glass">
+      <button class="modal-close" aria-label="Close" onclick="closeModal()">×</button>
+      <div id="caseModalContent">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Scripts ====== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <script>
+    // Init AOS
+    AOS.init({ duration: 900, once: true });
+
+    // Set year
+    document.addEventListener('DOMContentLoaded', ()=> {
+      const y = new Date().getFullYear();
+      const el = document.getElementById('year'); if(el) el.textContent = y;
+    });
+
+    // Progress bar
+    window.addEventListener('scroll', function(){
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (scrollTop / docHeight) * 100;
+      const pb = document.getElementById('progressBar');
+      if(pb) pb.style.width = pct + '%';
+    }, {passive:true});
+
+    // Parallax effect for hero background (subtle) using background-position and requestAnimationFrame
+    (function(){
+      const hero = document.querySelector('.hero-bg-parallax');
+      if(!hero) return;
+      let lastY = 0;
+      let ticking = false;
+      function onScroll(){
+        lastY = window.scrollY;
+        if(!ticking){
+          window.requestAnimationFrame(()=> {
+            // smaller multiplier for subtle effect
+            const y = Math.round(lastY * 0.08);
+            hero.style.backgroundPosition = `center calc(50% + ${y}px)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+    })();
+
+    // Swiper carousels - updated to avoid auto height resizing and smoother speed
+    function initSwipers(){
+      // Featured (case) swiper
+      new Swiper('.featured-swiper', {
+        loop:true,
+        pagination:{el:'.featured-swiper .swiper-pagination', clickable:true},
+        autoplay:{delay:3000, disableOnInteraction:false},
+        slidesPerView:1,
+        spaceBetween:12,
+        speed:600,
+        autoHeight:false // KEY: prevents layout reflow when slides change
+      });
+
+      // Competition swiper
+      new Swiper('.comp-swiper', {
+        loop:true,
+        pagination:{el:'.comp-swiper .swiper-pagination', clickable:true},
+        autoplay:{delay:3000, disableOnInteraction:false},
+        slidesPerView:1,
+        spaceBetween:12,
+        speed:600,
+        autoHeight:false
+      });
+
+      // Workshop swiper
+      new Swiper('.workshop-swiper', {
+        loop:true,
+        pagination:{el:'.workshop-swiper .swiper-pagination', clickable:true},
+        autoplay:{delay:3500, disableOnInteraction:false},
+        slidesPerView:1,
+        spaceBetween:12,
+        speed:600,
+        autoHeight:false
+      });
+
+      // Testimonials swiper
+      new Swiper('.testi-swiper', {
+        loop:true,
+        pagination:{el:'.testi-swiper .swiper-pagination', clickable:true},
+        autoplay:{delay:4000, disableOnInteraction:false},
+        slidesPerView:1,
+        spaceBetween:12,
+        speed:600,
+        autoHeight:false
+      });
+    }
+    initSwipers();
+
+    // Intersection observer for fade-in gallery elements
+    (function(){
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('show');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.12});
+      document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+    })();
+
+    // Animated counters
+    (function(){
+      const counters = document.querySelectorAll('.stat-number');
+      const speed = 2000; // ms
+      const inObs = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const el = entry.target;
+            if(el.dataset.animated) return;
+            const target = parseInt(el.getAttribute('data-target') || el.textContent.replace(/\D/g,''),10);
+            if(isNaN(target)) return;
+            el.dataset.animated = true;
+            let start = 0;
+            const increment = Math.max(1, Math.floor(target / (speed / 16)));
+            const step = () => {
+              start += increment;
+              if(start >= target){ el.textContent = target + (typeof el.getAttribute('data-suffix') === 'string' ? el.getAttribute('data-suffix') : ''); }
+              else { el.textContent = start; requestAnimationFrame(step); }
+            };
+            step();
+            inObs.unobserve(el);
+          }
+        });
+      }, {threshold:0.4});
+      counters.forEach(c=>inObs.observe(c));
+    })();
+
+  // Modal content definitions (unchanged except new "cheers" case added)
+const CASES = {
+  gov: {
+    title: "Intore Mu Biruhuko — Government Partnership",
+    images: [
+      "webp/traditionl-01.webp",
+      "webp/img03.webp",
+      "webp/img04.webp"
+    ],
+    body: `<p class="text-muted-80">We collaborated with government agencies to design and deliver the <strong>Intore Mu Biruhubo</strong> cultural engagement program. We handled community outreach, talent identification, logistics and produced several regional showcases culminating in national events.</p>
+          <ul class="muted-small">
+            <li>5 cell attendees from Rusororo sector</li>
+            <li>700 youth selected for advanced training</li>
+            <li>Local capacity building for event production</li>
+          </ul>`
+  },
+  comp: {
+    title: "Nationwide Competitions — Kids & Youth",
+    images: [
+      "webp/fashion-02.webp",
+      "webp/drama-01.webp",
+      "webp/comedy.webp"
+    ],
+    body: `<p class="text-muted-80">Our competitions focus on giving children and teenagers a stage to present their talents — with mentorship, evaluation, and pathways to further training.</p>
+          <ul class="muted-small">
+            <li>700 participants across regional qualifiers</li>
+            <li>Disciplines: Traditional dance, comedy, music, dance, athletics</li>
+            <li>Follow-up coaching and internship opportunities</li>
+          </ul>`
+  },
+  ws: {
+    title: "Campus Workshops & Labs",
+    images: [
+      "webp/workshop-01.webp",
+      "webp/workshop-02.webp",
+      "webp/workshp-03.webp"
+    ],
+    body: `<p class="text-muted-80">Intensive, hands-on workshops to build skill and leadership. Session types ranged from weekend intensives to semester-long mentorships.</p>
+          <ul class="muted-small">
+            <li>Tourism workshops</li>
+            <li>Trainers included industry professionals and alumni</li>
+            <li>Graduates gained practical portfolios and knowledge</li>
+          </ul>`
+  },
+  cheers: {
+    title: "Connect & Cheers — Monthly Fun & Talents",
+    images: [
+      "webp/CONNECT-01.webp",
+      "webp/CONNECT-05.webp",
+      "webp/CONNECT-03.webp"
+    ],
+    body: `<p class="text-muted-80">Connect & Cheers is our monthly event that brings people together to celebrate creativity, enjoy football matches, watch movies, and discover CAS talents. It’s a night of fun, energy, and community where everyone is welcome!</p>
+          <ul class="muted-small">
+            <li>Activities: talent showcases, live football screenings, movie nights</li>
+            <li>Audience: students, friends, and the community</li>
+            <li>Goal: to create unforgettable moments and connect people through entertainment</li>
+          </ul>`
+  }
+};
+
+
+    // Unified modal open/close (replaces duplicate functions)
+    function openModal(caseKey){
+      const caseData = CASES[caseKey];
+      if(!caseData) return;
+      const modal = document.getElementById('caseModal');
+      const content = document.getElementById('caseModalContent');
+      // Build modal HTML with a swiper inside
+      let html = `<h3>${caseData.title}</h3>${caseData.body}<div class="swiper modal-swiper mt-3"><div class="swiper-wrapper">`;
+      caseData.images.forEach(img => {
+        // modal images use fixed height as well to avoid layout jumps
+        html += `<div class="swiper-slide"><img src="${img}" style="width:100%;height:260px;object-fit:cover;border-radius:8px" alt=""></div>`;
+      });
+      html += `</div><div class="swiper-pagination"></div></div>`;
+      content.innerHTML = html;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+
+      // Initialize Swiper inside modal (destroy previous if any)
+      // Note: using unique selector '.modal-swiper' is fine since modal content removed on close
+      new Swiper('.modal-swiper', {
+        loop:true,
+        pagination:{el:'.modal-swiper .swiper-pagination', clickable:true},
+        autoplay:{delay:3500, disableOnInteraction:false},
+        slidesPerView:1,
+        spaceBetween:12,
+        speed:600,
+        autoHeight:false
+      });
+
+      // add escape listener
+      document.addEventListener('keydown', escClose);
+    }
+
+    function closeModal(){
+      const overlay = document.getElementById('caseModal');
+      overlay.style.display = 'none';
+      overlay.setAttribute('aria-hidden','true');
+      const content = document.getElementById('caseModalContent');
+      if(content) content.innerHTML = '';
+      document.removeEventListener('keydown', escClose);
+    }
+    function escClose(e){ if(e.key === 'Escape') closeModal(); }
+
+    // Wire up buttons with data-open-case (single binding)
+    document.querySelectorAll('[data-open-case]').forEach(btn=>{
+      btn.addEventListener('click', ()=> openModal(btn.getAttribute('data-open-case')));
+    });
+
+    // Close on overlay click
+    document.getElementById('caseModal').addEventListener('click', function(e){
+      if(e.target === this) closeModal();
+    });
+    
+  </script>
+</body>
+</html>
