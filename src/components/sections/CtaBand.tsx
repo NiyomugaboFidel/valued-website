@@ -6,11 +6,11 @@ import { ctaBand } from '../../data/content';
 
 export function CtaBand() {
   return (
-    <section className="bg-brand py-14 sm:py-16">
-      <Reveal className="container-main">
+    <section className="bg-brand-section py-14 sm:py-16">
+      <Reveal className="brand-section-inner container-main">
         <motion.div
           whileHover={{ scale: 1.005 }}
-          className="flex flex-col items-start justify-between gap-6 border border-white/15 bg-brand-dark/30 px-6 py-8 sm:flex-row sm:items-center sm:px-10 sm:py-10"
+          className="flex flex-col items-start justify-between gap-6 border border-white/15 bg-black/15 px-6 py-8 backdrop-blur-sm sm:flex-row sm:items-center sm:px-10 sm:py-10"
         >
           <div className="max-w-xl">
             <h2 className="text-xl font-bold text-white sm:text-2xl">{ctaBand.title}</h2>

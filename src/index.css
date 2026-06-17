@@ -2,13 +2,14 @@
 
 @theme {
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --color-brand: #991b1b;
   --color-brand-dark: #7f1d1d;
   --color-brand-light: #b91c1c;
   --color-brand-muted: #fef2f2;
   --color-surface: #fafafa;
   --color-muted: #64748b;
-  --radius-brand: 4px;
+  --radius-brand: 0px;
 }
 
 @layer base {
@@ -22,7 +23,7 @@
   }
 
   img {
-    @apply rounded-brand;
+    border-radius: 0;
   }
 }
 
@@ -41,5 +42,68 @@
 
   .card {
     @apply border border-slate-100 bg-white shadow-sm;
+  }
+
+  .bg-brand-section {
+    background-color: #991b1b;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 90% 80%, rgba(0, 0, 0, 0.18) 0%, transparent 50%),
+      linear-gradient(145deg, #b91c1c 0%, #991b1b 38%, #7f1d1d 72%, #450a0a 100%),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(255, 255, 255, 0.025) 18px,
+        rgba(255, 255, 255, 0.025) 19px
+      );
+  }
+
+  .bg-brand-footer {
+    position: relative;
+    isolation: isolate;
+    background-color: #450a0a;
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(185, 28, 28, 0.22) 0%, transparent 42%),
+      radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.05) 0%, transparent 38%),
+      linear-gradient(180deg, #7f1d1d 0%, #5c1212 45%, #450a0a 100%);
+  }
+
+  .bg-brand-footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-brand-footer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 1;
+    background: linear-gradient(90deg, transparent, #fca5a5 20%, #fff 50%, #fca5a5 80%, transparent);
+    pointer-events: none;
+  }
+
+  .brand-section-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-kicker {
+    @apply font-sans text-[11px] font-semibold uppercase tracking-[0.2em] sm:text-xs;
   }
 }

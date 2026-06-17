@@ -1,4 +1,4 @@
-/** Central image map — only 12 optimized assets (~1.5 MB total) */
+/** Central image map   only 12 optimized assets (~1.5 MB total) */
 export const images = {
   logo: '/images/logo.webp',
   hero: '/images/hero.webp',
@@ -18,12 +18,21 @@ export const images = {
   },
 } as const;
 
-/** Reuse a small set — no duplicate file loads */
+/** Reuse a small set   no duplicate file loads */
 export const galleryImages = [
   images.hero,
   images.culture,
   images.workshop,
   images.campus,
+  images.sports,
+  images.community,
+] as const;
+
+/** Rotating hero background slides on the home page */
+export const heroSlides = [
+  images.hero,
+  images.culture,
+  images.workshop,
   images.sports,
   images.community,
 ] as const;

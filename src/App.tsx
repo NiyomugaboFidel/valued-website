@@ -6,6 +6,10 @@ import { PageTransition } from './components/motion/PageTransition';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Programs } from './pages/Programs';
+import { Vsep } from './pages/programs/Vsep';
+import { ValueXchange } from './pages/programs/ValueXchange';
+import { ConnectCheers } from './pages/programs/ConnectCheers';
+import { InnovaKidz } from './pages/programs/InnovaKidz';
 import { Campus } from './pages/Campus';
 import { Impact } from './pages/Impact';
 import { Contact } from './pages/Contact';
@@ -21,6 +25,10 @@ function AnimatedRoutes() {
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
           <Route path="/about" element={<PageTransition><About /></PageTransition>} />
           <Route path="/programs" element={<PageTransition><Programs /></PageTransition>} />
+          <Route path="/programs/vsep" element={<PageTransition><Vsep /></PageTransition>} />
+          <Route path="/programs/valuexchange" element={<PageTransition><ValueXchange /></PageTransition>} />
+          <Route path="/programs/connect-cheers" element={<PageTransition><ConnectCheers /></PageTransition>} />
+          <Route path="/programs/innovakidz" element={<PageTransition><InnovaKidz /></PageTransition>} />
           <Route path="/campus" element={<PageTransition><Campus /></PageTransition>} />
           <Route path="/impact" element={<PageTransition><Impact /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />

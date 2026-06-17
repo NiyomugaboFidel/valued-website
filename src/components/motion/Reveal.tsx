@@ -9,28 +9,19 @@ type RevealProps = {
   once?: boolean;
 };
 
-const offsets = {
-  up: { y: 28 },
-  down: { y: -28 },
-  left: { x: -28 },
-  right: { x: 28 },
-  none: {},
-};
-
 export function Reveal({
   children,
   className = '',
   delay = 0,
-  direction = 'up',
   once = true,
 }: RevealProps) {
   const reduced = useReducedMotion();
-  const offset = reduced ? {} : offsets[direction];
+
 
   return (
     <motion.div
       className={className}
-      initial={reduced ? { opacity: 1 } : { opacity: 0, ...offset }}
+      
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once, margin: '-60px' }}
       transition={{ duration: reduced ? 0 : 0.5, delay: reduced ? 0 : delay, ease: [0.22, 1, 0.36, 1] }}

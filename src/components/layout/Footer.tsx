@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
-import { navLinks, contactInfo, socialLinks } from '../../data/navigation';
+import { navLinks, contactInfo, socialLinks, programLinks } from '../../data/navigation';
 import { images } from '../../data/images';
 import { Button } from '../ui/Button';
 import { LazyImage } from '../ui/LazyImage';
+import { SocialLinkButton } from '../ui/SocialIcon';
 import { Reveal } from '../motion/Reveal';
 
 export function Footer() {
   return (
-    <footer className="bg-brand-dark text-white">
-      <div className="container-main py-14">
+    <footer className="bg-brand-footer text-white">
+      <div className="brand-section-inner container-main py-14">
         <Reveal>
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
             <div>
               <div className="mb-4 flex items-center gap-2">
                 <LazyImage src={images.logo} alt="VALUED" className="h-9 w-9 object-cover" />
@@ -21,15 +22,13 @@ export function Footer() {
               </p>
               <div className="mt-4 flex gap-2">
                 {socialLinks.map((link) => (
-                  <a
+                  <SocialLinkButton
                     key={link.label}
                     href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="border border-white/10 px-3 py-1.5 text-xs font-medium text-red-100/80 hover:bg-white/10 transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                    label={link.label}
+                    platform={link.platform}
+                    variant="light"
+                  />
                 ))}
               </div>
             </div>
@@ -37,9 +36,22 @@ export function Footer() {
             <div>
               <h6 className="mb-4 text-xs font-bold uppercase tracking-widest text-red-200/60">Explore</h6>
               <ul className="space-y-2.5">
-                {navLinks.slice(1).map((link) => (
+                {navLinks.slice(1).filter((link) => link.label !== 'Programs').map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} className="text-sm text-red-100/70 hover:text-white transition-colors">
+                    <Link to={link.path} className="text-sm text-red-100/70 transition-colors hover:text-white">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h6 className="mb-4 text-xs font-bold uppercase tracking-widest text-red-200/60">Programs</h6>
+              <ul className="space-y-2.5">
+                {programLinks.map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-sm text-red-100/70 transition-colors hover:text-white">
                       {link.label}
                     </Link>
                   </li>
@@ -50,9 +62,9 @@ export function Footer() {
             <div>
               <h6 className="mb-4 text-xs font-bold uppercase tracking-widest text-red-200/60">Quick Links</h6>
               <ul className="space-y-2.5 text-sm text-red-100/70">
-                <li><Link to="/apply" className="hover:text-white transition-colors">How to Apply</Link></li>
-                <li><Link to="/campus" className="hover:text-white transition-colors">Campus</Link></li>
-                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                <li><Link to="/apply" className="transition-colors hover:text-white">How to Apply</Link></li>
+                <li><Link to="/campus" className="transition-colors hover:text-white">Campus</Link></li>
+                <li><Link to="/contact" className="transition-colors hover:text-white">Contact</Link></li>
               </ul>
             </div>
 

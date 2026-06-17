@@ -1,17 +1,18 @@
-import { GraduationCap, Lightbulb, Network, Rocket } from 'lucide-react';
+import { GraduationCap, Lightbulb, Mail, Network, Phone, Rocket } from 'lucide-react';
+import { SocialIcon } from '../components/ui/SocialIcon';
 import { PageHero } from '../components/ui/PageHero';
-import { SectionHeading } from '../components/ui/SectionHeading';
-import { ContactForm } from '../components/ui/ContactForm';
-import { CtaBand } from '../components/sections/CtaBand';
+import { Button } from '../components/ui/Button';
 import { Reveal, Stagger, StaggerItem } from '../components/motion/Reveal';
-import { applyBenefits } from '../data/content';
+import { PartnersSection } from '../components/sections/PartnersSection';
+import { applyBenefits, pageHeroImages } from '../data/content';
+import { contactInfo } from '../data/navigation';
 
 const benefitIcons = { graduation: GraduationCap, lightbulb: Lightbulb, network: Network, rocket: Rocket };
 
 const steps = [
-  { title: 'Submit Application', description: 'Fill in your details, select a track, and tell us about your goals.' },
-  { title: 'Orientation Call', description: 'Our team reviews your application and schedules a brief orientation.' },
-  { title: 'Start Training', description: 'Get accepted and begin your journey with weekly sessions at Light Center.' },
+  { title: 'Reach Out', description: 'Email or WhatsApp our team with your name, age, and program of interest.' },
+  { title: 'Orientation Call', description: 'Our team reviews your message and schedules a brief orientation.' },
+  { title: 'Start Training', description: 'Get accepted and begin weekly sessions at Light Center, Kabuga.' },
 ];
 
 export function Apply() {
@@ -21,13 +22,18 @@ export function Apply() {
         kicker="Apply"
         title="Take the First Step Toward Your Future"
         description="Join 300+ young people already training in arts, sports, leadership, and creative skills at VALUED."
-        cta={{ label: 'Start Application', href: '#apply-form' }}
-        compact
+        image={pageHeroImages.apply}
+        cta={{ label: 'Contact Us to Apply', to: '/contact' }}
       />
 
       <section className="section-pad">
         <div className="container-main">
-          <Reveal><SectionHeading kicker="Benefits" title="What You Gain as a VALUED Participant" /></Reveal>
+          <Reveal className="mb-8 sm:mb-10">
+            <span className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-brand sm:text-xs">
+              Benefits
+            </span>
+            <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">What You Gain as a VALUED Participant</h2>
+          </Reveal>
           <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {applyBenefits.map((benefit) => {
               const Icon = benefitIcons[benefit.icon as keyof typeof benefitIcons];
@@ -47,18 +53,49 @@ export function Apply() {
         </div>
       </section>
 
-      <section id="apply-form" className="section-pad bg-surface">
-        <Reveal className="container-main max-w-lg">
-          <SectionHeading kicker="Application" title="Complete Your Application" description="All fields are required unless marked optional. We review applications on a rolling basis." />
-          <div className="card p-5 sm:p-6">
-            <ContactForm action="https://formspree.io/f/mgvljjdj" fields="apply" />
+      <section className="bg-brand-section py-14 text-white sm:py-16">
+        <Reveal className="brand-section-inner container-main max-w-2xl text-center">
+          <h2 className="text-xl font-bold sm:text-2xl">Ready to Apply?</h2>
+          <p className="mt-3 text-sm text-red-100/85 sm:text-base">
+            Contact us directly   no online form needed. Our team will guide you through the next steps.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="inline-flex items-center gap-2 bg-white px-6 py-3 text-sm font-semibold text-brand hover:bg-brand-muted"
+            >
+              <Mail size={16} />
+              {contactInfo.email}
+            </a>
+            <a
+              href={`https://wa.me/250795454671`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
+            >
+              <SocialIcon platform="whatsapp" size={16} />
+              WhatsApp Us
+            </a>
+          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-red-100/75">
+            {contactInfo.phones.map((phone) => (
+              <a key={phone} href={`tel:${phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-1.5 hover:text-white">
+                <Phone size={14} />
+                {phone}
+              </a>
+            ))}
           </div>
         </Reveal>
       </section>
 
       <section className="section-pad">
         <div className="container-main">
-          <Reveal><SectionHeading kicker="Process" title="How to Apply in 3 Steps" /></Reveal>
+          <Reveal className="mb-8 text-center sm:mb-10">
+            <span className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-brand sm:text-xs">
+              Process
+            </span>
+            <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">How to Apply in 3 Steps</h2>
+          </Reveal>
           <Stagger className="grid gap-4 md:grid-cols-3">
             {steps.map((step, i) => (
               <StaggerItem key={step.title}>
@@ -70,10 +107,13 @@ export function Apply() {
               </StaggerItem>
             ))}
           </Stagger>
+          <Reveal className="mt-10 text-center">
+            <Button to="/contact" size="lg">Go to Contact Page</Button>
+          </Reveal>
         </div>
       </section>
 
-      <CtaBand />
+      <PartnersSection />
     </>
   );
 }
