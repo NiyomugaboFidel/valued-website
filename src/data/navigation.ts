@@ -20,7 +20,7 @@ export const navLinks: readonly NavLinkItem[] = [
       { label: 'InnovaKidz', path: '/programs/innovakidz' },
     ],
   },
-  { label: 'Campus', path: '/campus' },
+  { label: 'Gallery', path: '/gallery' },
   { label: 'Impact', path: '/impact' },
   { label: 'Contact', path: '/contact' },
 ];
@@ -30,7 +30,7 @@ export const programLinks =
     'children' in link && !!link.children,
   )!.children;
 
-export type SocialPlatform = 'instagram' | 'x';
+export type SocialPlatform = 'instagram' | 'x' | 'linkedin';
 
 export const socialLinks = [
   {
@@ -42,6 +42,11 @@ export const socialLinks = [
     label: 'X',
     platform: 'x' as SocialPlatform,
     href: 'https://x.com/ValuEdProgram?t=u4OvuyxFNX9H7B3Ue9M4nw&s=09',
+  },
+  {
+    label: 'LinkedIn',
+    platform: 'linkedin' as SocialPlatform,
+    href: 'https://www.linkedin.com/company/valued-program/',
   },
 ];
 

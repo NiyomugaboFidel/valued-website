@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { heroContent, heroStats } from '../../../data/content';
@@ -11,7 +11,8 @@ const SLIDE_INTERVAL_MS = 5000;
 
 export function BusinessHero() {
   const [slideIndex, setSlideIndex] = useState(0);
-  const { headline, highlight, primaryCta, secondaryCta } = heroContent;
+  const [loadedSlides, setLoadedSlides] = useState<Set<number>>(() => new Set([0, 1]));
+  const { headline, highlight, description, primaryCta, secondaryCta } = heroContent;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -21,16 +22,33 @@ export function BusinessHero() {
     return () => window.clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const next = (slideIndex + 1) % heroSlides.length;
+    setLoadedSlides((current) => {
+      if (current.has(slideIndex) && current.has(next)) return current;
+      const updated = new Set(current);
+      updated.add(slideIndex);
+      updated.add(next);
+      return updated;
+    });
+  }, [slideIndex]);
+
+  const visibleSlides = useMemo(
+    () => heroSlides.map((src, index) => ({ src, index })).filter(({ index }) => loadedSlides.has(index)),
+    [loadedSlides],
+  );
+
   return (
-    <section id="home-hero" className="relative min-h-screen overflow-hidden bg-brand-dark text-white">
-      {/* Rotating background images */}
+    <section id="home-hero" className="relative min-h-[100svh] overflow-hidden bg-brand-dark text-white">
       <div className="absolute inset-0">
-        {heroSlides.map((src, index) => (
+        {visibleSlides.map(({ src, index }) => (
           <motion.img
             key={src}
             src={src}
             alt=""
             aria-hidden
+            decoding={index === 0 ? 'sync' : 'async'}
+            fetchPriority={index === 0 ? 'high' : 'low'}
             animate={{
               opacity: index === slideIndex ? 1 : 0,
               scale: index === slideIndex ? 1 : 1.04,
@@ -43,37 +61,37 @@ export function BusinessHero() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.15)_0%,rgba(0,0,0,0.35)_50%,rgba(69,10,10,0.55)_100%)]" />
       </div>
 
-      {/* Center headline   stays fixed while images rotate */}
-      <div className="relative flex min-h-screen flex-col items-center justify-center px-4 pb-44 pt-32 text-center sm:px-6 sm:pb-48 sm:pt-36 lg:px-10">
+      <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-4 pb-40 pt-28 text-center sm:px-6 sm:pb-44 sm:pt-32 lg:px-10 lg:pb-48 lg:pt-36">
         <Reveal>
-          <h1 className="font-display mx-auto max-w-5xl text-4xl font-semibold leading-[1.12] sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="font-display mx-auto max-w-5xl text-[clamp(1.875rem,5vw,4.5rem)] font-semibold leading-[1.12]">
             {headline}
-            <span className="mt-1 block text-red-200">{highlight}</span>
+            <span className="mt-1 block text-[#F5A623]">{highlight}</span>
           </h1>
         </Reveal>
+        <Reveal delay={0.08}>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-red-100/90 sm:mt-6 sm:text-base md:text-lg">
+            {description}
+          </p>
+        </Reveal>
         <Reveal delay={0.12}>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button to={primaryCta.to} variant="white" size="lg">
+          <div className="mt-7 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:items-center sm:justify-center">
+            <Button to={primaryCta.to} variant="white" size="lg" className="w-full sm:w-auto">
               {primaryCta.label} <ArrowRight size={16} />
             </Button>
             <Button
               to={secondaryCta.to}
               variant="outline"
               size="lg"
-              className="border-white/50 text-white hover:bg-brand/10 hover:text-brand"
+              className="w-full border-white/50 text-white hover:bg-white/10 hover:text-white sm:w-auto"
             >
               {secondaryCta.label}
             </Button>
           </div>
         </Reveal>
-
-        {/* Slide indicators */}
-      
       </div>
 
-      {/* Stats bar */}
       <div className="absolute inset-x-0 bottom-0 border-t border-white/10 bg-brand backdrop-blur-md">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-4 py-6 sm:gap-6 sm:px-6 sm:py-8 md:grid-cols-3 lg:grid-cols-5 lg:gap-4 lg:px-10 lg:py-10">
+        <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-3 px-4 py-5 sm:gap-5 sm:px-6 sm:py-7 md:grid-cols-3 lg:grid-cols-5 lg:gap-4 lg:px-10 lg:py-8">
           {heroStats.map((stat) => (
             <StatCounter
               key={stat.label}

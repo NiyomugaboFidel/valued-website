@@ -2,21 +2,27 @@ type SectionHeadingProps = {
   kicker?: string;
   title: string;
   description?: string;
-  align?: 'left' | 'center';
   light?: boolean;
+  align?: 'center' | 'left' | 'responsive-left';
+  className?: string;
 };
+
+const alignClasses = {
+  center: 'mx-auto max-w-2xl text-center',
+  left: 'mx-0 max-w-none text-left',
+  'responsive-left': 'mx-auto max-w-2xl text-center md:mx-0 md:max-w-none md:text-left',
+} as const;
 
 export function SectionHeading({
   kicker,
   title,
   description,
-  align = 'center',
   light = false,
+  align = 'center',
+  className = '',
 }: SectionHeadingProps) {
-  const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
-
   return (
-    <div className={`mb-8 max-w-2xl sm:mb-10 lg:mb-12 ${alignClass}`}>
+    <div className={`mb-8 sm:mb-10 lg:mb-12 ${alignClasses[align]} ${className}`}>
       {kicker && (
         <span className={`text-kicker mb-2 block ${light ? 'text-red-200' : 'text-brand'}`}>
           {kicker}

@@ -6,10 +6,12 @@ import { ChevronDown } from 'lucide-react';
 type NavDropdownProps = {
   label: string;
   active: boolean;
+  overHero?: boolean;
+  onOpenChange?: (open: boolean) => void;
   children: ReactNode;
 };
 
-export function NavDropdown({ label, active, children }: NavDropdownProps) {
+export function NavDropdown({ label, active, overHero = false, onOpenChange, children }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -25,6 +27,10 @@ export function NavDropdown({ label, active, children }: NavDropdownProps) {
       minWidth: Math.max(rect.width, 220),
     });
   };
+
+  useEffect(() => {
+    onOpenChange?.(open);
+  }, [open, onOpenChange]);
 
   useEffect(() => {
     if (!open) return;
@@ -67,7 +73,13 @@ export function NavDropdown({ label, active, children }: NavDropdownProps) {
           requestAnimationFrame(updatePosition);
         }}
         className={`inline-flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors xl:px-3.5 ${
-          active ? 'bg-brand-muted text-brand' : 'text-slate-600 hover:bg-slate-50 hover:text-brand'
+          overHero
+            ? active
+              ? 'bg-white/15 text-white'
+              : 'text-white/90 hover:bg-white/10 hover:text-white'
+            : active
+              ? 'bg-brand-muted text-brand'
+              : 'text-slate-600 hover:bg-slate-50 hover:text-brand'
         }`}
         aria-expanded={open}
         aria-haspopup="true"

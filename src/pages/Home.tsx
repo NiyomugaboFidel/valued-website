@@ -15,7 +15,7 @@ export function Home() {
       <VisionMissionSection />
       <ProgramsSection />
       <ApplySection />
-      <PartnersSection />
+      <PartnersSection className="-mt-4 pb-10 sm:-mt-6 sm:pb-12" />
     </>
   );
 }

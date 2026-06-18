@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Globe, Sparkles, Users } from 'lucide-react';
 import { programs } from '../../../data/content';
+import { homeProgramCardImages } from '../../../data/images';
 import { Button } from '../../ui/Button';
+import { SectionHeading } from '../../ui/SectionHeading';
 import { LazyImage } from '../../ui/LazyImage';
 import { Reveal, Stagger, StaggerItem } from '../../motion/Reveal';
 
@@ -16,13 +18,8 @@ export function ProgramsSection() {
   return (
     <section className="section-pad bg-surface">
       <div className="container-main">
-        <Reveal className="mb-8 sm:mb-10">
-          <span className="text-kicker mb-2 block text-brand">
-            What We Offer
-          </span>
-          <h2 className="font-display text-3xl font-semibold text-slate-900 sm:text-4xl lg:text-5xl">
-            Our Four Core Programs
-          </h2>
+        <Reveal>
+          <SectionHeading kicker="What We Offer" title="Our Four Core Programs" />
         </Reveal>
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
@@ -32,7 +29,11 @@ export function ProgramsSection() {
             return (
               <StaggerItem key={program.id}>
                 <motion.div whileHover={{ y: -4 }} className="card flex h-full flex-col overflow-hidden">
-                  <LazyImage src={program.image} alt={program.cardTitle} className="h-36 w-full object-cover" />
+                  <LazyImage
+                    src={homeProgramCardImages[program.id as keyof typeof homeProgramCardImages]}
+                    alt={program.cardTitle}
+                    className="h-36 w-full object-cover"
+                  />
                   <div className="flex flex-1 flex-col p-5">
                     <div className="mb-3 flex h-9 w-9 items-center justify-center bg-brand-muted text-brand">
                       <Icon size={17} />

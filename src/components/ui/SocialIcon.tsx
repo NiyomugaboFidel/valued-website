@@ -1,6 +1,6 @@
-import { Icon, X, type IconNode, type LucideProps } from 'lucide-react';
+import { Icon, Linkedin, X, type IconNode, type LucideProps } from 'lucide-react';
 
-export type SocialPlatform = 'instagram' | 'x' | 'whatsapp';
+export type SocialPlatform = 'instagram' | 'x' | 'whatsapp' | 'linkedin';
 
 const instagramIcon: IconNode = [
   ['rect', { width: '20', height: '20', x: '2', y: '2', rx: '5', ry: '5', key: '0' }],
@@ -22,6 +22,10 @@ export function SocialIcon({ platform, size = 18, strokeWidth = 2, ...props }: S
     return <X size={size} strokeWidth={strokeWidth} {...props} />;
   }
 
+  if (platform === 'linkedin') {
+    return <Linkedin size={size} strokeWidth={strokeWidth} {...props} />;
+  }
+
   if (platform === 'instagram') {
     return <Icon iconNode={instagramIcon} size={size} strokeWidth={strokeWidth} {...props} />;
   }
@@ -31,6 +35,7 @@ export function SocialIcon({ platform, size = 18, strokeWidth = 2, ...props }: S
 
 export function detectSocialPlatform(url: string): SocialPlatform {
   if (/instagram\.com/i.test(url)) return 'instagram';
+  if (/linkedin\.com/i.test(url)) return 'linkedin';
   if (/wa\.me|whatsapp/i.test(url)) return 'whatsapp';
   if (/x\.com|twitter\.com/i.test(url)) return 'x';
   return 'x';

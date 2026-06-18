@@ -4,7 +4,6 @@ import { Button } from '../ui/Button';
 import { LazyImage } from '../ui/LazyImage';
 import { Reveal } from '../motion/Reveal';
 import { CtaBand } from './CtaBand';
-import { PartnersSection } from './PartnersSection';
 
 type ProgramPageContentProps = {
   program: Program;
@@ -105,7 +104,6 @@ export function ProgramPageContent({ program }: ProgramPageContentProps) {
         kicker={program.category}
         title={program.title}
         image={program.heroImage}
-        cta={{ label: 'Apply Now', to: '/apply' }}
       />
 
       <article className="section-pad">
@@ -135,23 +133,9 @@ export function ProgramPageContent({ program }: ProgramPageContentProps) {
               </blockquote>
             </Reveal>
 
-            <Reveal delay={0.1} className="border-t border-slate-100 pt-12 sm:pt-14">
-              <h3 className="text-kicker text-brand">Program Highlights</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {program.highlights.map((tag) => (
-                  <span
-                    key={tag}
-                    className="border border-brand/20 bg-brand-muted px-3 py-1.5 text-xs font-semibold text-brand"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.15} className="mt-12 flex flex-col gap-3 border-t border-slate-100 pt-12 sm:flex-row">
-              <Button to="/apply">Apply for This Program</Button>
-              <Button to="/programs" variant="outline">
+            <Reveal delay={0.15} className="mt-12 flex flex-col items-center justify-center gap-3 border-t border-slate-100 pt-12 sm:flex-row">
+              <Button to="/apply" size="sm">Apply for This Program</Button>
+              <Button to="/programs" variant="outline" size="sm">
                 View All Programs
               </Button>
             </Reveal>
@@ -159,7 +143,6 @@ export function ProgramPageContent({ program }: ProgramPageContentProps) {
         </div>
       </article>
 
-      <PartnersSection />
       <CtaBand />
     </>
   );

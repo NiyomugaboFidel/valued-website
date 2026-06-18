@@ -1,48 +1,51 @@
 import { partners } from '../../data/content';
+import { SectionHeading } from '../ui/SectionHeading';
 import { LazyImage } from '../ui/LazyImage';
 import { Reveal } from '../motion/Reveal';
 
-const sizeClasses = {
-  sm: 'w-[calc(50%-6px)] min-h-[88px] sm:w-[calc(25%-12px)]',
-  md: 'w-[calc(50%-6px)] min-h-[104px] sm:w-[calc(33.333%-8px)]',
-  lg: 'w-full min-h-[120px] sm:w-[calc(50%-6px)] sm:min-h-[136px]',
-} as const;
+type PartnersSectionProps = {
+  className?: string;
+};
 
-export function PartnersSection() {
+function PartnerNameMark({ name }: { name: string }) {
+  const compact = name.length > 14;
+
   return (
-    <section className="section-pad bg-white">
-      <Reveal className="container-main">
-        <div className="mb-8 text-center sm:mb-10">
-          <span className="text-kicker mb-2 block text-brand">
-            Partners
-          </span>
-          <h2 className="font-display text-3xl font-semibold text-slate-900 sm:text-4xl lg:text-5xl">
-            Organizations We Work With
-          </h2>
-        </div>
+    <span
+      className={`flex h-14 min-w-28 max-w-44 items-center justify-center px-2 text-center font-display font-extrabold uppercase leading-[1.05] tracking-tight text-gold sm:h-16 sm:min-w-32 sm:max-w-52 lg:h-18 lg:max-w-60 ${
+        compact ? 'text-sm sm:text-base lg:text-lg' : 'text-base sm:text-lg lg:text-xl'
+      }`}
+      aria-label={name}
+    >
+      {name}
+    </span>
+  );
+}
 
-        <div className="-m-1.5 flex flex-wrap justify-center">
+export function PartnersSection({ className = '' }: PartnersSectionProps) {
+  return (
+    <section className={`py-8 sm:py-10 ${className}`}>
+      <Reveal className="container-main">
+        <SectionHeading
+          kicker="Partners"
+          title="Organizations We Work With"
+          className="mb-4 sm:mb-5 [&_h2]:text-xl [&_h2]:sm:text-2xl"
+        />
+
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-5 sm:gap-x-10 sm:gap-y-6 lg:gap-x-12">
           {partners.map((partner) => (
             <div
               key={partner.name}
-              className={`card m-1.5 flex items-center justify-center p-4 transition-colors hover:border-brand/30 hover:bg-brand-muted/20 ${sizeClasses[partner.span]}`}
+              className="flex h-14 shrink-0 items-center justify-center sm:h-16 lg:h-18"
             >
               {partner.logo ? (
                 <LazyImage
                   src={partner.logo}
                   alt={partner.name}
-                  className={`max-h-full max-w-full object-contain opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0 ${
-                    partner.span === 'lg' ? 'h-14 sm:h-16' : partner.span === 'md' ? 'h-10 sm:h-12' : 'h-8 sm:h-9'
-                  }`}
+                  className="h-14 w-auto max-w-[150px] object-contain sm:h-16 sm:max-w-[190px] lg:h-18 lg:max-w-[220px]"
                 />
               ) : (
-                <span
-                  className={`px-2 text-center font-semibold text-slate-500 ${
-                    partner.span === 'lg' ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
-                  }`}
-                >
-                  {partner.name}
-                </span>
+                <PartnerNameMark name={partner.name} />
               )}
             </div>
           ))}

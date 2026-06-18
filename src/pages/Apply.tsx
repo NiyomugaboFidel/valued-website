@@ -1,9 +1,9 @@
 import { GraduationCap, Lightbulb, Mail, Network, Phone, Rocket } from 'lucide-react';
 import { SocialIcon } from '../components/ui/SocialIcon';
 import { PageHero } from '../components/ui/PageHero';
+import { SectionHeading } from '../components/ui/SectionHeading';
 import { Button } from '../components/ui/Button';
 import { Reveal, Stagger, StaggerItem } from '../components/motion/Reveal';
-import { PartnersSection } from '../components/sections/PartnersSection';
 import { applyBenefits, pageHeroImages } from '../data/content';
 import { contactInfo } from '../data/navigation';
 
@@ -23,16 +23,12 @@ export function Apply() {
         title="Take the First Step Toward Your Future"
         description="Join 300+ young people already training in arts, sports, leadership, and creative skills at VALUED."
         image={pageHeroImages.apply}
-        cta={{ label: 'Contact Us to Apply', to: '/contact' }}
       />
 
       <section className="section-pad">
         <div className="container-main">
-          <Reveal className="mb-8 sm:mb-10">
-            <span className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-brand sm:text-xs">
-              Benefits
-            </span>
-            <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">What You Gain as a VALUED Participant</h2>
+          <Reveal>
+            <SectionHeading kicker="Benefits" title="What You Gain as a VALUED Participant" />
           </Reveal>
           <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {applyBenefits.map((benefit) => {
@@ -90,11 +86,8 @@ export function Apply() {
 
       <section className="section-pad">
         <div className="container-main">
-          <Reveal className="mb-8 text-center sm:mb-10">
-            <span className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-brand sm:text-xs">
-              Process
-            </span>
-            <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">How to Apply in 3 Steps</h2>
+          <Reveal>
+            <SectionHeading kicker="Process" title="How to Apply in 3 Steps" />
           </Reveal>
           <Stagger className="grid gap-4 md:grid-cols-3">
             {steps.map((step, i) => (
@@ -113,7 +106,6 @@ export function Apply() {
         </div>
       </section>
 
-      <PartnersSection />
     </>
   );
 }

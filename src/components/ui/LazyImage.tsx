@@ -18,7 +18,7 @@ export function LazyImage({ src, alt, className = '', priority = false }: LazyIm
       decoding="async"
       fetchPriority={priority ? 'high' : 'auto'}
       onLoad={() => setLoaded(true)}
-      className={`transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+      className={`bg-slate-100 transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'} ${className}`}
     />
   );
 }

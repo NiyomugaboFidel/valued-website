@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Globe, Sparkles, Users } from 'lucide-react';
 import { PageHero } from '../components/ui/PageHero';
+import { SectionHeading } from '../components/ui/SectionHeading';
 import { Button } from '../components/ui/Button';
 import { LazyImage } from '../components/ui/LazyImage';
 import { CtaBand } from '../components/sections/CtaBand';
-import { PartnersSection } from '../components/sections/PartnersSection';
 import { Reveal, Stagger, StaggerItem } from '../components/motion/Reveal';
 import { pageHeroImages, programs, programsOverview } from '../data/content';
 
@@ -22,7 +22,6 @@ export function Programs() {
         kicker={programsOverview.kicker}
         title={programsOverview.title}
         image={pageHeroImages.programs}
-        cta={{ label: 'Apply Now', to: '/apply' }}
       />
 
       <section className="section-pad">
@@ -53,12 +52,11 @@ export function Programs() {
 
       <section className="section-pad bg-surface">
         <Reveal className="container-main text-center">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">Find the Right Program for You</h2>
-          <Button to="/apply" size="lg" className="mt-6">Apply Now</Button>
+          <SectionHeading title="Find the Right Program for You" className="mb-6" />
+          <Button to="/apply" size="sm">Apply Now</Button>
         </Reveal>
       </section>
 
-      <PartnersSection />
       <CtaBand />
     </>
   );

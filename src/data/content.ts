@@ -1,9 +1,10 @@
-import { galleryImages, images } from './images';
+import { galleryImages, homeAboutStackImages, images, programMedia } from './images';
 
 export const heroContent = {
   headline: "Building Rwanda's Future Through",
   highlight: 'Value-Based Education',
-  
+  description:
+    'ValuEd bridges the gap between schooling and real-world success — equipping children and youth with practical skills, entrepreneurial mindsets, and ethical values to lead Rwanda forward.',
   primaryCta: { label: 'Explore Programs', to: '/programs' },
   secondaryCta: { label: 'Apply Now', to: '/apply' },
 } as const;
@@ -68,9 +69,15 @@ export const aboutValues = [
 ] as const;
 
 export const aboutGalleryImages = [
-  images.culture,
-  images.workshop,
-  images.community,
+  galleryImages[0],
+  galleryImages[1],
+  galleryImages[2],
+] as const;
+
+export const aboutGalleryStack = [
+  { src: homeAboutStackImages[0], alt: 'ValuEd youth learning together' },
+  { src: homeAboutStackImages[1], alt: 'Hands-on skills training at ValuEd' },
+  { src: homeAboutStackImages[2], alt: 'Community and mentorship at ValuEd' },
 ] as const;
 
 export const programsOverview = {
@@ -114,8 +121,8 @@ export const programs: readonly Program[] = [
     title: 'VSEP — ValuEd Schools Enrichment Program',
     shortDescription:
       'A multilingual digital learning platform embedded in schools, connecting students, teachers, and parents while tracking progress beyond the classroom.',
-    image: images.campus,
-    heroImage: images.campus,
+    image: programMedia.vsep.card,
+    heroImage: programMedia.vsep.hero,
     icon: 'school',
     readTime: '6 min read',
     quote: {
@@ -129,7 +136,7 @@ export const programs: readonly Program[] = [
           "Walk into any school in Rwanda and you'll find students who are bright, eager, and full of potential. Yet formal education alone rarely captures the full picture of who a young person is becoming — their creativity, leadership, discipline, and entrepreneurial instincts often develop outside standard subjects.",
           'VSEP was built to enrich formal education by delivering structured extra-curricular learning inside schools and tracking every student\'s progress in one unified system. Teachers gain visibility. Parents stay connected. Students build portfolios of real achievement.',
         ],
-        image: { src: images.campus, alt: 'Students at a ValuEd campus session', caption: 'VSEP brings enrichment directly into the school environment.' },
+        image: { src: programMedia.vsep.photos[0], alt: 'Students at a ValuEd campus session', caption: 'VSEP brings enrichment directly into the school environment.' },
         imagePosition: 'full',
       },
       {
@@ -138,7 +145,7 @@ export const programs: readonly Program[] = [
           'The program covers digital and creative skills, entrepreneurship, leadership, ethics, life skills, sports, and applied learning — all aligned with Rwanda\'s national development priorities and Vision 2050.',
           'Sessions are designed to be practical from day one. A student might learn basic financial literacy in the morning, practice public speaking in the afternoon, and close the week with a small team project that mirrors real workplace collaboration.',
         ],
-        image: { src: images.workshop, alt: 'Hands-on ValuEd workshop', caption: 'Workshops blend instruction with immediate application.' },
+        image: { src: programMedia.vsep.photos[1], alt: 'Hands-on ValuEd workshop', caption: 'Workshops blend instruction with immediate application.' },
         imagePosition: 'right',
       },
       {
@@ -147,7 +154,7 @@ export const programs: readonly Program[] = [
           'VSEP\'s multilingual digital platform links students, teachers, and parents in one place. Attendance, milestones, certificates, and progress reports are no longer scattered across notebooks and informal conversations.',
           'School administrators can see which enrichment tracks are working, where students are thriving, and where additional support is needed. This data-driven approach helps schools invest resources where they matter most.',
         ],
-        image: { src: images.hero, alt: 'ValuEd community gathering', caption: 'Parents and teachers stay informed through the VSEP platform.' },
+        image: { src: programMedia.vsep.photos[2], alt: 'ValuEd community gathering', caption: 'Parents and teachers stay informed through the VSEP platform.' },
         imagePosition: 'left',
       },
       {
@@ -156,7 +163,7 @@ export const programs: readonly Program[] = [
           'For years, schools across Rwanda have struggled with a consistent challenge: how to run structured extra-curricular programs and reliably track student development beyond grades. VSEP was designed specifically to solve this.',
           'Whether a student excels in arts, sports, entrepreneurship, or leadership, their growth is documented, celebrated, and visible — creating a fuller picture of readiness for higher education, employment, or self-employment.',
         ],
-        image: { src: images.culture, alt: 'Cultural enrichment activity', caption: 'Arts and culture are core pillars of the VSEP enrichment model.' },
+        image: { src: programMedia.vsep.photos[3], alt: 'Cultural enrichment activity', caption: 'Arts and culture are core pillars of the VSEP enrichment model.' },
         imagePosition: 'below',
       },
       {
@@ -184,8 +191,8 @@ export const programs: readonly Program[] = [
     title: 'ValueXchange Workshops',
     shortDescription:
       'National youth empowerment workshops bringing industry professionals and mentors directly to young people across Rwanda.',
-    image: images.workshop,
-    heroImage: images.workshop,
+    image: programMedia.valuexchange.card,
+    heroImage: programMedia.valuexchange.hero,
     icon: 'globe',
     readTime: '5 min read',
     quote: {
@@ -199,7 +206,7 @@ export const programs: readonly Program[] = [
           'Rwanda\'s youth have ideas — bold, creative, and urgently needed. What they often lack is access: mentors who have walked the path, industry insiders who understand the market, and practical knowledge that turns a good idea into a viable business.',
           'ValueXchange Workshops were created to be that access point. By bringing professionals directly to young people — in community hubs, schools, and partner venues — ValuEd removes the barriers that keep talent from meeting opportunity.',
         ],
-        image: { src: images.workshop, alt: 'ValueXchange workshop in session', caption: 'Industry professionals lead hands-on ValueXchange sessions.' },
+        image: { src: programMedia.valuexchange.photos[0], alt: 'ValueXchange workshop in session', caption: 'Industry professionals lead hands-on ValueXchange sessions.' },
         imagePosition: 'full',
       },
       {
@@ -208,7 +215,7 @@ export const programs: readonly Program[] = [
           'Each ValueXchange session follows a launchpad format: a short expert introduction, an interactive exercise, group work, and a takeaway assignment participants complete in their own communities or businesses within days.',
           'There are no passive audiences. Facilitators expect questions, debate, and real prototypes — whether that means a basic business plan, a tourism pitch, or a digital marketing strategy for a local product.',
         ],
-        image: { src: images.community, alt: 'Youth networking at a ValuEd event', caption: 'Participants collaborate and network throughout every session.' },
+        image: { src: programMedia.valuexchange.photos[1], alt: 'Youth networking at a ValuEd event', caption: 'Participants collaborate and network throughout every session.' },
         imagePosition: 'left',
       },
       {
@@ -217,7 +224,7 @@ export const programs: readonly Program[] = [
           'Workshops rotate across sectors critical to Rwanda\'s economy: agriculture and agribusiness, tourism and hospitality, finance and banking, taxation, insurance, technology, and the creative industries.',
           'The long-term vision is a national calendar of ValueXchange events — so a young person in any district can find a session relevant to their ambitions, whether they want to farm smarter, build a brand, or launch a tech startup.',
         ],
-        image: { src: images.sports, alt: 'Youth sports and teamwork activity', caption: 'Teamwork and discipline learned in sports translate directly to business.' },
+        image: { src: programMedia.valuexchange.photos[2], alt: 'Youth sports and teamwork activity', caption: 'Teamwork and discipline learned in sports translate directly to business.' },
         imagePosition: 'right',
       },
       {
@@ -245,8 +252,8 @@ export const programs: readonly Program[] = [
     title: 'Connect & Cheers',
     shortDescription:
       'A vibrant platform where skills are showcased, celebrated, and transformed into real opportunities through events and networking.',
-    image: images.community,
-    heroImage: images.community,
+    image: programMedia.connectCheers.card,
+    heroImage: programMedia.connectCheers.hero,
     icon: 'users',
     readTime: '5 min read',
     quote: {
@@ -260,7 +267,7 @@ export const programs: readonly Program[] = [
           'Connect & Cheers is the final activation point in the ValuEd ecosystem — the stage where skills gained through VSEP, ValueXchange, and InnovaKidz are showcased, celebrated, and transformed into real opportunities.',
           'Participants present projects, perform on stage, network with peers, and interact directly with industry leaders and potential employers. It is part talent show, part career fair, and part community festival.',
         ],
-        image: { src: images.community, alt: 'Connect & Cheers community event', caption: 'Monthly events bring together youth, families, and industry guests.' },
+        image: { src: programMedia.connectCheers.photos[0], alt: 'Connect & Cheers community event', caption: 'Monthly events bring together youth, families, and industry guests.' },
         imagePosition: 'full',
       },
       {
@@ -269,7 +276,7 @@ export const programs: readonly Program[] = [
           'Every month, Connect & Cheers hosts gatherings that mix performance, exhibition, and networking. Football screenings, cultural nights, talent showcases, and project expos rotate through the calendar so there is always something new to experience.',
           'These events are deliberately inclusive — families, school groups, and community members are welcome. The atmosphere is celebratory, but the underlying purpose is serious: connecting young talent to people who can open doors.',
         ],
-        image: { src: images.culture, alt: 'Cultural performance at ValuEd event', caption: 'Traditional and contemporary talent share the same stage.' },
+        image: { src: programMedia.connectCheers.photos[7], alt: 'Cultural performance at ValuEd event', caption: 'Traditional and contemporary talent share the same stage.' },
         imagePosition: 'right',
       },
       {
@@ -278,7 +285,7 @@ export const programs: readonly Program[] = [
           'Beyond headline performances, Connect & Cheers features community project showcases — bringing innovative solutions developed through ValuEd programs into the national spotlight.',
           'A team might present a waste-management initiative, a youth-led media project, or a small business born from a ValueXchange workshop. Judges, mentors, and guests provide feedback, encouragement, and in some cases, pathways to funding or employment.',
         ],
-        image: { src: images.workshop, alt: 'Project presentation at ValuEd', caption: 'Young innovators present solutions to real community challenges.' },
+        image: { src: programMedia.connectCheers.photos[12], alt: 'Project presentation at ValuEd', caption: 'Young innovators present solutions to real community challenges.' },
         imagePosition: 'left',
       },
       {
@@ -305,8 +312,8 @@ export const programs: readonly Program[] = [
     title: 'InnovaKidz',
     shortDescription:
       "ValuEd's foundational program where the youngest members discover creativity, build confidence, and develop skills for the future.",
-    image: images.culture,
-    heroImage: images.culture,
+    image: programMedia.innovakidz.card,
+    heroImage: programMedia.innovakidz.hero,
     icon: 'sparkles',
     readTime: '5 min read',
     quote: {
@@ -320,7 +327,7 @@ export const programs: readonly Program[] = [
           'Every child is born creative. InnovaKidz exists to make sure that creativity doesn\'t get squeezed out before it has a chance to grow. As ValuEd\'s foundational program, it serves children and early youth at the most formative stage of development.',
           'More than 160 children engage in structured InnovaKidz training every year at Light Center and partner venues — building habits of curiosity, discipline, and self-expression that carry forward into every other ValuEd program.',
         ],
-        image: { src: images.culture, alt: 'InnovaKidz cultural activities', caption: 'Children explore creativity through culture, arts, and performance.' },
+        image: { src: programMedia.innovakidz.photos[0], alt: 'InnovaKidz cultural activities', caption: 'Children explore creativity through culture, arts, and performance.' },
         imagePosition: 'full',
       },
       {
@@ -329,7 +336,7 @@ export const programs: readonly Program[] = [
           'InnovaKidz offers structured tracks across photography, drama and theatre, public speaking, sports, and audio and media technology. Each track is taught by coaches who blend instruction with play — because learning at this age must feel alive.',
           'Children rotate through activities that build fine motor skills, confidence on stage, teamwork on the field, and technical comfort with cameras and microphones. No prior experience is required; enthusiasm is the only prerequisite.',
         ],
-        image: { src: images.campus, alt: 'Children learning at Light Center', caption: 'Light Center hosts InnovaKidz sessions year-round.' },
+        image: { src: programMedia.innovakidz.photos[1], alt: 'Children learning at Light Center', caption: 'Light Center hosts InnovaKidz sessions year-round.' },
         imagePosition: 'left',
       },
       {
@@ -338,7 +345,7 @@ export const programs: readonly Program[] = [
           'What sets InnovaKidz apart is its integration of creativity and culture. Rwandan children are the proud inheritors of a rich cultural tradition — dance, music, storytelling, and visual arts that have defined communities for generations.',
           'InnovaKidz honors that heritage while equipping participants with tools for the modern world. A child might learn traditional Intore dance one week and basic video editing the next, understanding that both are expressions of the same creative spirit.',
         ],
-        image: { src: images.workshop, alt: 'Creative workshop for young learners', caption: 'Traditional culture and modern media skills go hand in hand.' },
+        image: { src: programMedia.innovakidz.photos[2], alt: 'Creative workshop for young learners', caption: 'Traditional culture and modern media skills go hand in hand.' },
         imagePosition: 'right',
       },
       {
@@ -347,7 +354,7 @@ export const programs: readonly Program[] = [
           'The outcomes of InnovaKidz extend far beyond any single skill. Parents and teachers report increased confidence, better communication, stronger peer relationships, and a willingness to try new things.',
           'Many InnovaKidz graduates transition into VSEP school programs and later ValueXchange workshops — carrying with them a foundation of creativity and courage that makes every next step easier.',
         ],
-        image: { src: images.sports, alt: 'Youth sports activity', caption: 'Sports build teamwork and resilience alongside artistic tracks.' },
+        image: { src: programMedia.innovakidz.photos[3], alt: 'Youth sports activity', caption: 'Sports build teamwork and resilience alongside artistic tracks.' },
         imagePosition: 'below',
       },
       {
@@ -380,10 +387,10 @@ export const corePrograms = programs.map((p) => ({
 }));
 
 export const innovakidzTracks = [
-  { title: 'Traditional Dance', image: images.culture, description: 'Heritage, rhythm, and storytelling through Rwanda\'s cultural arts.' },
-  { title: 'Modern Dance', image: images.workshop, description: 'Hip-hop, contemporary, and afrobeat with professional choreography.' },
-  { title: 'Football', image: images.sports, description: 'Discipline, teamwork, and competitive play on and off the field.' },
-  { title: 'Arts & Fashion', image: images.community, description: 'Creative expression, styling, and confidence on the runway.' },
+  { title: 'Traditional Dance', image: programMedia.innovakidz.photos[4], description: 'Heritage, rhythm, and storytelling through Rwanda\'s cultural arts.' },
+  { title: 'Modern Dance', image: programMedia.valuexchange.photos[3], description: 'Hip-hop, contemporary, and afrobeat with professional choreography.' },
+  { title: 'Football', image: galleryImages[22], description: 'Discipline, teamwork, and competitive play on and off the field.' },
+  { title: 'Arts & Fashion', image: programMedia.connectCheers.photos[10], description: 'Creative expression, styling, and confidence on the runway.' },
 ] as const;
 
 export const whyChoose = [
@@ -455,23 +462,128 @@ export const missionCards = [
 ] as const;
 
 export const programDetails = [
-  { title: 'Modern Dance', image: images.workshop, description: 'Contemporary, hip-hop, and freestyle training with choreography, stage presence, and teamwork built into every session.' },
-  { title: 'Traditional Dance', image: images.culture, description: 'Connect to Rwanda\'s roots through Intore-inspired movement, drumming, costumes, and the stories behind each performance.' },
-  { title: 'Football Skills', image: images.sports, description: 'Technical training, match strategy, and leadership on the pitch   building discipline, fitness, and lifelong friendships.' },
-  { title: 'Arts & Crafts', image: images.community, description: 'Painting, drawing, and creative building projects that develop patience, imagination, and cultural pride.' },
+  { title: 'Modern Dance', image: programMedia.valuexchange.photos[4], description: 'Contemporary, hip-hop, and freestyle training with choreography, stage presence, and teamwork built into every session.' },
+  { title: 'Traditional Dance', image: programMedia.connectCheers.photos[7], description: 'Connect to Rwanda\'s roots through Intore-inspired movement, drumming, costumes, and the stories behind each performance.' },
+  { title: 'Football Skills', image: galleryImages[22], description: 'Technical training, match strategy, and leadership on the pitch   building discipline, fitness, and lifelong friendships.' },
+  { title: 'Arts & Crafts', image: programMedia.innovakidz.photos[5], description: 'Painting, drawing, and creative building projects that develop patience, imagination, and cultural pride.' },
 ] as const;
 
 export const campusFeatures = [
-  { title: 'Leadership Journey', image: images.campus, description: 'Structured activities that develop communication, vision, and community responsibility.' },
-  { title: 'Innovation Workshops', image: images.workshop, description: 'Hands-on sessions in design thinking, entrepreneurship, and practical career skills.' },
-  { title: 'Community Events', image: images.community, description: 'Regular gatherings that connect students, families, and local partners.' },
+  { title: 'Leadership Journey', image: galleryImages[4], description: 'Structured activities that develop communication, vision, and community responsibility.' },
+  { title: 'Innovation Workshops', image: programMedia.valuexchange.photos[2], description: 'Hands-on sessions in design thinking, entrepreneurship, and practical career skills.' },
+  { title: 'Community Events', image: programMedia.connectCheers.photos[13], description: 'Regular gatherings that connect students, families, and local partners.' },
 ] as const;
 
 export const impactHighlights = [
-  { title: 'Intore Mu Biruhuko Partnership', image: images.culture, description: 'Government collaboration delivering cultural programs and youth talent showcases across Rwanda.' },
-  { title: 'Nationwide Competitions', image: images.sports, description: 'Multi-discipline events in arts, sports, and performance with mentorship and prizes for winners.' },
-  { title: 'Campus Workshops', image: images.workshop, description: 'Industry-led sessions in tourism, storytelling, leadership, and professional development.' },
+  { title: 'Intore Mu Biruhuko Partnership', image: programMedia.connectCheers.photos[7], description: 'Government collaboration delivering cultural programs and youth talent showcases across Rwanda.' },
+  { title: 'Nationwide Competitions', image: galleryImages[22], description: 'Multi-discipline events in arts, sports, and performance with mentorship and prizes for winners.' },
+  { title: 'Campus Workshops', image: programMedia.valuexchange.photos[1], description: 'Industry-led sessions in tourism, storytelling, leadership, and professional development.' },
 ] as const;
+
+export type ImpactArticle = {
+  id: string;
+  title: string;
+  tagline: string;
+  image: string;
+  imageAlt: string;
+  inlineImages?: readonly { src: string; alt: string }[];
+  stats: readonly { value: string; label: string }[];
+  paragraphs: readonly string[];
+};
+
+export const impactArticles: readonly ImpactArticle[] = [
+  {
+    id: 'vsep',
+    title: 'VSEP — Changing the School Experience',
+    tagline: 'Closing the skills gap, one school at a time',
+    image: programMedia.vsep.hero,
+    imageAlt: 'Students in the ValuEd Schools Enrichment Program',
+    inlineImages: [
+      { src: programMedia.vsep.photos[1], alt: 'VSEP workshop session' },
+      { src: programMedia.vsep.photos[3], alt: 'ValuEd enrichment in schools' },
+    ],
+    stats: [
+      { value: '500+', label: 'Students annually' },
+      { value: '12+', label: 'Skills tracks' },
+      { value: '1', label: 'Unified platform' },
+    ],
+    paragraphs: [
+      'For years, Rwandan schools have produced graduates who studied hard but struggled to find meaningful work. VSEP is changing that equation — not by changing the curriculum, but by adding what the curriculum cannot yet provide. When a student engages with VSEP\'s digital learning platform, they\'re not just completing modules — they\'re building a portfolio of practical skills that employers and entrepreneurs actually recognize and reward.',
+      'The impact on individual students is measurable and personal. Young people who lacked confidence to speak in front of peers are now leading presentations. Students who never touched a computer are now building digital content. And perhaps most powerfully, young people from underserved communities who once saw their futures as limited now see them as open — because VSEP reaches into those communities and says: you belong in this economy too.',
+      'For schools and teachers, VSEP provides something equally valuable: a structured system for tracking what students actually develop, beyond grades alone. Administrators can identify emerging talent early. Parents can track their child\'s progress. The entire educational community becomes more connected around what matters most — preparing young people for life, not just examinations.',
+      'On a national scale, VSEP represents a scalable answer to one of Rwanda\'s most pressing challenges: ensuring that the next generation is not just educated, but employable. As VSEP grows from Rusororo to Gasabo to nationwide reach, its cumulative impact will be felt in unemployment statistics, entrepreneurship rates, and the confidence of a generation that was given the tools to succeed.',
+    ],
+  },
+  {
+    id: 'valuexchange',
+    title: 'ValueXchange Workshops — Opening Doors',
+    tagline: 'From training rooms to real-world opportunity',
+    image: programMedia.valuexchange.hero,
+    imageAlt: 'Youth at a ValueXchange workshop',
+    inlineImages: [
+      { src: programMedia.valuexchange.photos[1], alt: 'ValueXchange youth collaboration' },
+      { src: programMedia.valuexchange.photos[2], alt: 'Hands-on ValueXchange training' },
+    ],
+    stats: [
+      { value: '12+', label: 'Workshops per year' },
+      { value: '8+', label: 'Communities engaged' },
+      { value: '5+', label: 'Industry sectors' },
+    ],
+    paragraphs: [
+      'The impact of a ValueXchange Workshop is often felt the day after it happens. A participant who learned basic financial planning opens a mobile savings account for the first time. A young creative who attended a media workshop pitches their first client. An aspiring entrepreneur who met a business owner at a session gets a referral that leads to their first sale. These aren\'t hypothetical outcomes — they are the human stories that accumulate across twelve or more workshops each year.',
+      'At a community level, ValueXchange creates what development practitioners call "sector literacy" — a shared understanding within a community of how specific industries work and how to access them. When dozens of young people in a single neighborhood attend a workshop on tourism, the whole community\'s economic literacy around that sector rises. That collective knowledge becomes a competitive advantage — for individuals, for businesses seeking local talent, and for Rwanda\'s growing service economy.',
+      'For partner organizations and guest experts who facilitate sessions, ValueXchange offers genuine visibility and an opportunity to build the talent pipeline they need. Companies that collaborate with ValuEd workshops are not just giving back — they are investing in their future workforce, building loyalty, and shaping the skills of the people who will work for or with them in the coming years. This mutual value is what makes the model sustainable.',
+      'Looking further ahead, as ValueXchange expands into sectors like insurance, banking, and creative industries, its cumulative impact will represent one of the most significant grassroots workforce development efforts in Rwanda. Each workshop is a small investment. Across years and sectors, those investments compound into a generation of Rwandan youth who enter the workforce not just ready, but equipped to lead.',
+    ],
+  },
+  {
+    id: 'connect-cheers',
+    title: 'Connect & Cheers — Making Success Visible',
+    tagline: 'Where achievement meets opportunity',
+    image: programMedia.connectCheers.hero,
+    imageAlt: 'Connect & Cheers community event',
+    inlineImages: [
+      { src: programMedia.connectCheers.photos[5], alt: 'Youth performance at Connect & Cheers' },
+      { src: programMedia.connectCheers.photos[10], alt: 'Community celebration at ValuEd' },
+    ],
+    stats: [
+      { value: '12', label: 'Events per year' },
+      { value: '10+', label: 'Partners engaged' },
+      { value: 'Unlimited', label: 'Connections made' },
+    ],
+    paragraphs: [
+      'Impact isn\'t always visible until it\'s celebrated. Connect & Cheers exists to make it visible — and the numbers are only part of the story. Every event that brings together youth, mentors, employers, parents, and investors is an event that creates connections that wouldn\'t otherwise exist. A young woman who presents her digital marketing project at Connect & Cheers doesn\'t just gain confidence — she gains a contact, a mentor, perhaps an employer who was in the room when she spoke.',
+      'For sponsors and institutional partners, Connect & Cheers delivers something rare in youth development programming: authentic, meaningful visibility. When a company\'s logo appears at a Connect & Cheers event, it\'s not just advertising — it\'s alignment with a generation that will remember who supported them. In Rwanda\'s increasingly brand-conscious youth market, that association carries genuine commercial and reputational value for years.',
+      'For the community at large, Connect & Cheers shifts the narrative around youth — from problem to possibility. When parents see their children perform, present, and be applauded by industry leaders and officials, it reshapes their expectations for what education can deliver. That shift in community expectation is one of the most powerful outcomes ValuEd produces, and Connect & Cheers is where it becomes real and shared.',
+      'Over time, as Connect & Cheers events grow in size and profile, they will become part of Rwanda\'s innovation and youth development calendar — events that companies, universities, and government institutions look forward to attending, not because they are obligated to, but because they know that Rwanda\'s most promising young talent will be in the room.',
+    ],
+  },
+  {
+    id: 'innovakidz',
+    title: 'Sponsoring a Child, Transforming a Future',
+    tagline: 'InnovaKidz — child sponsorship at ValuEd Foundation',
+    image: programMedia.innovakidz.hero,
+    imageAlt: 'InnovaKidz children learning and creating together',
+    inlineImages: [
+      { src: programMedia.innovakidz.photos[2], alt: 'InnovaKidz creative learning' },
+      { src: programMedia.innovakidz.photos[5], alt: 'InnovaKidz children in session' },
+    ],
+    stats: [
+      { value: '160+', label: 'Children per year' },
+      { value: '9', label: 'Learning tracks' },
+      { value: '1', label: 'Life changed at a time' },
+    ],
+    paragraphs: [
+      'At ValuEd Foundation, we believe that no child should be denied the opportunity to learn, grow, and discover their potential because of financial barriers. Through InnovaKidz, we provide children with access to life-changing educational, creative, and leadership experiences that help them build confidence, develop practical skills, and prepare for a brighter future.',
+      'Many families, however, cannot afford the full cost of these programs. This is why child sponsorship and community support are essential to our mission. By sponsoring a child, donors are not simply paying program fees—they are investing in a young person\'s future and creating opportunities that can impact an entire family and community.',
+      'Each sponsored child gains access to high-quality extracurricular learning in areas such as public speaking, sports, digital skills, arts, leadership development, and creative expression. These experiences help children develop critical life skills including resilience, communication, teamwork, problem-solving, and self-confidence. For many participants, InnovaKidz becomes the first step toward a lifelong journey of learning and personal growth.',
+      'The impact extends far beyond the individual child. Parents consistently report improvements in their children\'s discipline, motivation, academic engagement, and self-esteem. Communities benefit as young people become more active, responsible, and equipped to contribute positively to society.',
+      'Every child who enters InnovaKidz becomes part of the broader ValuEd ecosystem of opportunity. Today\'s sponsored participant may become tomorrow\'s youth leader, entrepreneur, innovator, educator, or community changemaker. Through continued access to ValuEd programs, children are supported throughout their developmental journey, unlocking opportunities that would otherwise remain out of reach.',
+      'Your support can change the trajectory of a child\'s life. By sponsoring a child, you provide more than education and activities—you provide hope, opportunity, mentorship, and the chance for a young person to reach their full potential.',
+      'Together, we can ensure that every child, regardless of their economic background, has the opportunity to learn, thrive, and become a force for positive change in Rwanda.',
+    ],
+  },
+];
 
 export const impactStats = [
   { value: 500, label: 'Youth Reached' },
@@ -503,16 +615,13 @@ export type Partner = {
 };
 
 export const partners: readonly Partner[] = [
-  { name: 'Umurenge', logo: images.partners.umurenge, span: 'lg' },
-  { name: 'AMA', logo: images.partners.ama, span: 'md' },
-  { name: 'Light Center', span: 'md' },
-  { name: 'MINEDUC', span: 'sm' },
-  { name: 'RDB', span: 'sm' },
-  { name: 'RGB', span: 'sm' },
-  { name: 'Youth Connekt', span: 'md' },
-  { name: 'GIZ Rwanda', span: 'sm' },
-  { name: 'UNICEF Rwanda', span: 'md' },
-  { name: 'Private Sector Federation', span: 'lg' },
+  { name: 'Core Groupe', logo: images.partners.coreGroupe, span: 'lg' },
+  { name: 'Republic of Rwanda', logo: images.partners.republicOfRwanda, span: 'lg' },
+  { name: 'Devigo', logo: images.partners.devigo, span: 'md' },
+  { name: 'Code Mate', logo: images.partners.codeMate, span: 'md' },
+  { name: 'Judith Safaris', logo: images.partners.judithSafaris, span: 'md' },
+  { name: 'Africa Mission Alliance', span: 'sm' },
+  { name: 'Rusororo', span: 'sm' },
 ];
 
 export const applyBenefits = [
@@ -531,9 +640,9 @@ export const ctaBand = {
 
 export const pageHeroImages = {
   about: images.hero,
-  programs: images.workshop,
-  campus: images.campus,
-  impact: images.sports,
-  contact: images.community,
+  programs: programMedia.valuexchange.hero,
+  gallery: galleryImages[0],
+  impact: programMedia.connectCheers.photos[7],
+  contact: programMedia.connectCheers.photos[13],
   apply: images.hero,
 } as const;

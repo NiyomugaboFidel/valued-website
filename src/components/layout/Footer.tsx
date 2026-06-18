@@ -63,7 +63,7 @@ export function Footer() {
               <h6 className="mb-4 text-xs font-bold uppercase tracking-widest text-red-200/60">Quick Links</h6>
               <ul className="space-y-2.5 text-sm text-red-100/70">
                 <li><Link to="/apply" className="transition-colors hover:text-white">How to Apply</Link></li>
-                <li><Link to="/campus" className="transition-colors hover:text-white">Campus</Link></li>
+                <li><Link to="/gallery" className="transition-colors hover:text-white">Gallery</Link></li>
                 <li><Link to="/contact" className="transition-colors hover:text-white">Contact</Link></li>
               </ul>
             </div>

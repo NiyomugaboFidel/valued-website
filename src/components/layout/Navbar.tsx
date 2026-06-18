@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, Menu, X } from 'lucide-react';
@@ -8,7 +8,15 @@ import { Button } from '../ui/Button';
 import { LazyImage } from '../ui/LazyImage';
 import { NavDropdown } from './NavDropdown';
 
-function DesktopNavLink({ link }: { link: NavLinkItem }) {
+function DesktopNavLink({
+  link,
+  overHero = false,
+  onDropdownOpenChange,
+}: {
+  link: NavLinkItem;
+  overHero?: boolean;
+  onDropdownOpenChange?: (open: boolean) => void;
+}) {
   const location = useLocation();
   const active = isNavActive(location.pathname, link);
 
@@ -19,7 +27,13 @@ function DesktopNavLink({ link }: { link: NavLinkItem }) {
         end={link.path === '/'}
         className={() =>
           `px-3 py-2 text-sm font-medium transition-colors xl:px-3.5 ${
-            active ? 'bg-brand-muted text-brand' : 'text-slate-600 hover:bg-slate-50 hover:text-brand'
+            overHero
+              ? active
+                ? 'bg-white/15 text-white'
+                : 'text-white/90 hover:bg-white/10 hover:text-white'
+              : active
+                ? 'bg-brand-muted text-brand'
+                : 'text-slate-600 hover:bg-slate-50 hover:text-brand'
           }`
         }
       >
@@ -29,7 +43,7 @@ function DesktopNavLink({ link }: { link: NavLinkItem }) {
   }
 
   return (
-    <NavDropdown label={link.label} active={active}>
+    <NavDropdown label={link.label} active={active} overHero={overHero} onOpenChange={onDropdownOpenChange}>
       <Link
         to={link.path}
         className={`block px-4 py-2.5 text-sm font-medium transition-colors hover:bg-brand-muted hover:text-brand ${
@@ -56,9 +70,11 @@ function DesktopNavLink({ link }: { link: NavLinkItem }) {
 function MobileNavLink({
   link,
   onNavigate,
+  overHero = false,
 }: {
   link: NavLinkItem;
   onNavigate: () => void;
+  overHero?: boolean;
 }) {
   const location = useLocation();
   const [expanded, setExpanded] = useState(false);
@@ -71,7 +87,15 @@ function MobileNavLink({
         end={link.path === '/'}
         onClick={onNavigate}
         className={() =>
-          `px-3 py-2.5 text-sm font-medium ${active ? 'bg-brand-muted text-brand' : 'text-slate-600'}`
+          `px-3 py-2.5 text-sm font-medium ${
+            overHero
+              ? active
+                ? 'bg-white/15 text-white'
+                : 'text-white/90'
+              : active
+                ? 'bg-brand-muted text-brand'
+                : 'text-slate-600'
+          }`
         }
       >
         {link.label}
@@ -86,7 +110,13 @@ function MobileNavLink({
         onClick={() => setExpanded(!expanded)}
         aria-expanded={expanded}
         className={`flex w-full items-center justify-between px-3 py-2.5 text-sm font-medium ${
-          active ? 'bg-brand-muted text-brand' : 'text-slate-600'
+          overHero
+            ? active
+              ? 'bg-white/15 text-white'
+              : 'text-white/90'
+            : active
+              ? 'bg-brand-muted text-brand'
+              : 'text-slate-600'
         }`}
       >
         {link.label}
@@ -98,14 +128,20 @@ function MobileNavLink({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-l-2 border-brand/20 pl-3"
+            className={`overflow-hidden border-l-2 pl-3 ${overHero ? 'border-white/30' : 'border-brand/20'}`}
           >
             <NavLink
               to={link.path}
               onClick={onNavigate}
               className={() =>
                 `block px-3 py-2 text-sm ${
-                  location.pathname === link.path ? 'font-medium text-brand' : 'text-slate-500'
+                  overHero
+                    ? location.pathname === link.path
+                      ? 'font-medium text-white'
+                      : 'text-white/75'
+                    : location.pathname === link.path
+                      ? 'font-medium text-brand'
+                      : 'text-slate-500'
                 }`
               }
             >
@@ -118,7 +154,13 @@ function MobileNavLink({
                 onClick={onNavigate}
                 className={() =>
                   `block px-3 py-2 text-sm ${
-                    location.pathname === child.path ? 'font-medium text-brand' : 'text-slate-500'
+                    overHero
+                      ? location.pathname === child.path
+                        ? 'font-medium text-white'
+                        : 'text-white/75'
+                      : location.pathname === child.path
+                        ? 'font-medium text-brand'
+                        : 'text-slate-500'
                   }`
                 }
               >
@@ -135,11 +177,21 @@ function MobileNavLink({
 export function Navbar({
   embedded = false,
   fullWidth = false,
+  overHero = false,
+  onMenuOpenChange,
+  onDropdownOpenChange,
 }: {
   embedded?: boolean;
   fullWidth?: boolean;
+  overHero?: boolean;
+  onMenuOpenChange?: (open: boolean) => void;
+  onDropdownOpenChange?: (open: boolean) => void;
 }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    onMenuOpenChange?.(open);
+  }, [open, onMenuOpenChange]);
 
   const innerBarClass = fullWidth
     ? 'container-main py-3.5'
@@ -151,29 +203,53 @@ export function Navbar({
     <header
       className={
         embedded
-          ? 'relative z-50 overflow-visible bg-white'
+          ? 'relative z-50 overflow-visible bg-transparent'
           : 'sticky top-0 z-50 overflow-visible border-b border-slate-100 bg-white/95 backdrop-blur-md'
       }
     >
       <div className={`flex items-center justify-between gap-3 ${innerBarClass}`}>
         <Link to="/" className="flex min-w-0 shrink items-center gap-2">
           <LazyImage src={images.logo} alt="VALUED" className="h-8 w-8 shrink-0 object-cover sm:h-9 sm:w-9" priority />
-          <span className="truncate text-base font-extrabold tracking-tight text-brand sm:text-lg">VALUED</span>
+          <span
+            className={`truncate text-base font-extrabold tracking-tight sm:text-lg ${
+              overHero ? 'text-white' : 'text-brand'
+            }`}
+          >
+            VALUED
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex xl:gap-1">
           {navLinks.map((link) => (
-            <DesktopNavLink key={link.path} link={link} />
+            <DesktopNavLink
+              key={link.path}
+              link={link}
+              overHero={overHero}
+              onDropdownOpenChange={onDropdownOpenChange}
+            />
           ))}
         </nav>
 
         <div className="hidden shrink-0 lg:block">
-          <Button to="/apply" size="sm">Apply Now</Button>
+          {overHero ? (
+            <Button
+              to="/apply"
+              size="sm"
+              variant="outline"
+              className="border-white/50 text-white hover:bg-white/10 hover:text-white"
+            >
+              Apply Now
+            </Button>
+          ) : (
+            <Button to="/apply" size="sm">Apply Now</Button>
+          )}
         </div>
 
         <button
           type="button"
-          className="shrink-0 p-2 text-slate-600 hover:bg-slate-50 lg:hidden"
+          className={`shrink-0 p-2 lg:hidden ${
+            overHero ? 'text-white hover:bg-white/10' : 'text-slate-600 hover:bg-slate-50'
+          }`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -189,13 +265,26 @@ export function Navbar({
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-visible border-t border-slate-100 bg-white lg:hidden"
+            className={`overflow-visible border-t lg:hidden ${
+              overHero ? 'border-white/20 bg-brand-dark/95 backdrop-blur-md' : 'border-slate-100 bg-white'
+            }`}
           >
             <nav className={`flex flex-col gap-1 py-4 ${embedded && !fullWidth ? 'px-4 sm:px-6 lg:px-8' : 'px-4'}`}>
               {navLinks.map((link) => (
-                <MobileNavLink key={link.path} link={link} onNavigate={() => setOpen(false)} />
+                <MobileNavLink key={link.path} link={link} onNavigate={() => setOpen(false)} overHero={overHero} />
               ))}
-              <Button to="/apply" className="mt-2 w-full" onClick={() => setOpen(false)}>Apply Now</Button>
+              {overHero ? (
+                <Button
+                  to="/apply"
+                  variant="white"
+                  className="mt-2 w-full"
+                  onClick={() => setOpen(false)}
+                >
+                  Apply Now
+                </Button>
+              ) : (
+                <Button to="/apply" className="mt-2 w-full" onClick={() => setOpen(false)}>Apply Now</Button>
+              )}
             </nav>
           </motion.div>
         )}

@@ -1,9 +1,8 @@
 import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { PageHero } from '../components/ui/PageHero';
+import { SectionHeading } from '../components/ui/SectionHeading';
 import { Button } from '../components/ui/Button';
 import { Reveal, Stagger, StaggerItem } from '../components/motion/Reveal';
-import { PartnersSection } from '../components/sections/PartnersSection';
-import { TeamSection } from '../components/sections/TeamSection';
 import { contactInfo, socialLinks } from '../data/navigation';
 import { images } from '../data/images';
 import { pageHeroImages } from '../data/content';
@@ -39,7 +38,6 @@ export function Contact() {
         title="Let's Connect"
         description="Reach the ValuEd team for programs, partnerships, or general inquiries."
         image={pageHeroImages.contact}
-        cta={{ label: 'Email Us', href: `mailto:${contactInfo.email}` }}
       />
 
       <section className="section-pad">
@@ -82,10 +80,7 @@ export function Contact() {
 
       <section className="section-pad bg-surface">
         <Reveal className="container-main">
-          <span className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-brand sm:text-xs">
-            Location
-          </span>
-          <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">Find Us at Light Center</h2>
+          <SectionHeading kicker="Location" title="Find Us at Light Center" />
           <div className="mt-6 overflow-hidden border border-slate-100 bg-white shadow-sm">
             <iframe
               title="VALUED Location Map"
@@ -96,13 +91,6 @@ export function Contact() {
           </div>
         </Reveal>
       </section>
-
-      <TeamSection
-        kicker="Team"
-        title="Talk to a Program Lead"
-        description="Connect directly with our coordinators on WhatsApp for quick answers about enrollment and programs."
-        surface
-      />
 
       <section className="bg-brand-section py-14 text-white sm:py-16">
         <Reveal className="brand-section-inner container-main text-center">
@@ -126,8 +114,6 @@ export function Contact() {
           </div>
         </Reveal>
       </section>
-
-      <PartnersSection />
     </>
   );
 }
