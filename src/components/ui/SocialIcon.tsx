@@ -1,4 +1,4 @@
-import { Icon, Linkedin, X, type IconNode, type LucideProps } from 'lucide-react';
+import { Icon, X, type IconNode, type LucideProps } from 'lucide-react';
 
 export type SocialPlatform = 'instagram' | 'x' | 'whatsapp' | 'linkedin';
 
@@ -6,6 +6,12 @@ const instagramIcon: IconNode = [
   ['rect', { width: '20', height: '20', x: '2', y: '2', rx: '5', ry: '5', key: '0' }],
   ['path', { d: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z', key: '1' }],
   ['line', { x1: '17.5', y1: '6.5', x2: '17.51', y2: '6.5', key: '2' }],
+];
+
+const linkedinIcon: IconNode = [
+  ['path', { d: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z', key: '0' }],
+  ['rect', { width: '4', height: '12', x: '2', y: '9', key: '1' }],
+  ['circle', { cx: '4', cy: '4', r: '2', key: '2' }],
 ];
 
 const whatsappIcon: IconNode = [
@@ -23,7 +29,7 @@ export function SocialIcon({ platform, size = 18, strokeWidth = 2, ...props }: S
   }
 
   if (platform === 'linkedin') {
-    return <Linkedin size={size} strokeWidth={strokeWidth} {...props} />;
+    return <Icon iconNode={linkedinIcon} size={size} strokeWidth={strokeWidth} {...props} />;
   }
 
   if (platform === 'instagram') {
