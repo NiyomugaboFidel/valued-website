@@ -1,4 +1,4 @@
-import { galleryImages, images, programMedia } from './images';
+import { galleryImages, homeProgramCardImages, images, programMedia, publicProgramImages } from './images';
 
 export const heroContent = {
   headline: "Building Rwanda's Future Through",
@@ -75,8 +75,9 @@ export const aboutGalleryImages = [
 ] as const;
 
 export const aboutGalleryStack = [
-  { src: "/images/card.jpeg", alt: 'ValuEd youth learning together' },
+
   { src: "/images/card5.jpeg", alt: 'Hands-on skills training at ValuEd' },
+  { src: "/images/card.jpeg", alt: 'ValuEd youth learning together' },
   { src: "/images/card6.jpeg", alt: 'Community and mentorship at ValuEd' },
 ] as const;
 
@@ -192,7 +193,7 @@ export const programs: readonly Program[] = [
     shortDescription:
       'National youth empowerment workshops bringing industry professionals and mentors directly to young people across Rwanda.',
     image: programMedia.valuexchange.card,
-    heroImage: programMedia.valuexchange.hero,
+    heroImage: publicProgramImages.valuexchange.hero,
     icon: 'globe',
     readTime: '5 min read',
     quote: {
@@ -206,7 +207,7 @@ export const programs: readonly Program[] = [
           'Rwanda\'s youth have ideas — bold, creative, and urgently needed. What they often lack is access: mentors who have walked the path, industry insiders who understand the market, and practical knowledge that turns a good idea into a viable business.',
           'ValueXchange Workshops were created to be that access point. By bringing professionals directly to young people — in community hubs, schools, and partner venues — ValuEd removes the barriers that keep talent from meeting opportunity.',
         ],
-        image: { src: programMedia.valuexchange.photos[0], alt: 'ValueXchange workshop in session', caption: 'Industry professionals lead hands-on ValueXchange sessions.' },
+        image: { src: publicProgramImages.valuexchange.photos[0], alt: 'ValueXchange workshop in session', caption: 'Industry professionals lead hands-on ValueXchange sessions.' },
         imagePosition: 'full',
       },
       {
@@ -215,7 +216,7 @@ export const programs: readonly Program[] = [
           'Each ValueXchange session follows a launchpad format: a short expert introduction, an interactive exercise, group work, and a takeaway assignment participants complete in their own communities or businesses within days.',
           'There are no passive audiences. Facilitators expect questions, debate, and real prototypes — whether that means a basic business plan, a tourism pitch, or a digital marketing strategy for a local product.',
         ],
-        image: { src: programMedia.valuexchange.photos[1], alt: 'Youth networking at a ValuEd event', caption: 'Participants collaborate and network throughout every session.' },
+        image: { src: publicProgramImages.valuexchange.photos[1], alt: 'Youth collaborating at a ValueXchange workshop', caption: 'Participants collaborate and network throughout every session.' },
         imagePosition: 'left',
       },
       {
@@ -224,7 +225,7 @@ export const programs: readonly Program[] = [
           'Workshops rotate across sectors critical to Rwanda\'s economy: agriculture and agribusiness, tourism and hospitality, finance and banking, taxation, insurance, technology, and the creative industries.',
           'The long-term vision is a national calendar of ValueXchange events — so a young person in any district can find a session relevant to their ambitions, whether they want to farm smarter, build a brand, or launch a tech startup.',
         ],
-        image: { src: programMedia.valuexchange.photos[2], alt: 'Youth sports and teamwork activity', caption: 'Teamwork and discipline learned in sports translate directly to business.' },
+        image: { src: publicProgramImages.valuexchange.hero, alt: 'ValueXchange youth empowerment workshop', caption: 'Workshops connect young people with mentors and industry experts.' },
         imagePosition: 'right',
       },
       {
@@ -253,7 +254,7 @@ export const programs: readonly Program[] = [
     shortDescription:
       'A vibrant platform where skills are showcased, celebrated, and transformed into real opportunities through events and networking.',
     image: programMedia.connectCheers.card,
-    heroImage: programMedia.connectCheers.hero,
+    heroImage: publicProgramImages.connectCheers.hero,
     icon: 'users',
     readTime: '5 min read',
     quote: {
@@ -267,7 +268,7 @@ export const programs: readonly Program[] = [
           'Connect & Cheers is the final activation point in the ValuEd ecosystem — the stage where skills gained through VSEP, ValueXchange, and InnovaKidz are showcased, celebrated, and transformed into real opportunities.',
           'Participants present projects, perform on stage, network with peers, and interact directly with industry leaders and potential employers. It is part talent show, part career fair, and part community festival.',
         ],
-        image: { src: "/images/sportlight.jpeg", alt: 'Connect & Cheers community event', caption: 'Monthly events bring together youth, families, and industry guests.' },
+        image: { src: publicProgramImages.connectCheers.photos[0], alt: 'Connect & Cheers community event', caption: 'Monthly events bring together youth, families, and industry guests.' },
         imagePosition: 'full',
       },
       {
@@ -276,7 +277,7 @@ export const programs: readonly Program[] = [
           'Every month, Connect & Cheers hosts gatherings that mix performance, exhibition, and networking. Football screenings, cultural nights, talent showcases, and project expos rotate through the calendar so there is always something new to experience.',
           'These events are deliberately inclusive — families, school groups, and community members are welcome. The atmosphere is celebratory, but the underlying purpose is serious: connecting young talent to people who can open doors.',
         ],
-        image: { src:"/images/connect-cheers.jpeg", alt: 'Cultural performance at ValuEd event', caption: 'Traditional and contemporary talent share the same stage.' },
+        image: { src: publicProgramImages.connectCheers.photos[1], alt: 'Cultural performance at ValuEd event', caption: 'Traditional and contemporary talent share the same stage.' },
         imagePosition: 'right',
       },
       {
@@ -285,7 +286,7 @@ export const programs: readonly Program[] = [
           'Beyond headline performances, Connect & Cheers features community project showcases — bringing innovative solutions developed through ValuEd programs into the national spotlight.',
           'A team might present a waste-management initiative, a youth-led media project, or a small business born from a ValueXchange workshop. Judges, mentors, and guests provide feedback, encouragement, and in some cases, pathways to funding or employment.',
         ],
-        image: { src: "/images/Innova-kidz.jpeg", alt: 'Project presentation at ValuEd', caption: 'Young innovators present solutions to real community challenges.' },
+        image: { src: publicProgramImages.connectCheers.photos[2], alt: 'Connect & Cheers program showcase', caption: 'Young innovators present solutions to real community challenges.' },
         imagePosition: 'left',
       },
       {
@@ -309,69 +310,66 @@ export const programs: readonly Program[] = [
     slug: '/programs/innovakidz',
     category: 'Children & Early Youth',
     cardTitle: 'InnovaKidz',
-    title: 'InnovaKidz',
+    title: 'Sponsoring a Child, Transforming a Future',
     shortDescription:
-      "ValuEd's foundational program where the youngest members discover creativity, build confidence, and develop skills for the future.",
+      'At ValuEd Foundation, we believe that no child should be denied the opportunity to learn, grow, and discover their potential because of financial barriers. Through InnovaKidz, we provide children with access to life-changing educational, creative, and leadership experiences that help them build confidence, develop practical skills, and prepare for a brighter future.',
     image: programMedia.innovakidz.card,
-    heroImage: programMedia.innovakidz.hero,
+    heroImage: homeProgramCardImages.innovakidz,
     icon: 'sparkles',
-    readTime: '5 min read',
+    readTime: '4 min read',
     quote: {
-      text: 'Every child is born creative. InnovaKidz exists to make sure that creativity has room to grow before the world tells them to narrow down.',
-      attribution: 'InnovaKidz Coaches',
+      text: 'By sponsoring a child, donors are not simply paying program fees—they are investing in a young person\'s future and creating opportunities that can impact an entire family and community.',
+      attribution: 'ValuEd Foundation',
     },
     sections: [
       {
-        heading: 'Where the Journey Begins',
+        heading: 'Why Child Sponsorship Matters',
         paragraphs: [
-          'Every child is born creative. InnovaKidz exists to make sure that creativity doesn\'t get squeezed out before it has a chance to grow. As ValuEd\'s foundational program, it serves children and early youth at the most formative stage of development.',
-          'More than 160 children engage in structured InnovaKidz training every year at Light Center and partner venues — building habits of curiosity, discipline, and self-expression that carry forward into every other ValuEd program.',
+          'At ValuEd Foundation, we believe that no child should be denied the opportunity to learn, grow, and discover their potential because of financial barriers. Through InnovaKidz, we provide children with access to life-changing educational, creative, and leadership experiences that help them build confidence, develop practical skills, and prepare for a brighter future.',
+          'Many families, however, cannot afford the full cost of these programs. This is why child sponsorship and community support are essential to our mission. By sponsoring a child, donors are not simply paying program fees—they are investing in a young person\'s future and creating opportunities that can impact an entire family and community.',
         ],
-        image: { src: programMedia.innovakidz.photos[0], alt: 'InnovaKidz cultural activities', caption: 'Children explore creativity through culture, arts, and performance.' },
+        image: { src: homeProgramCardImages.innovakidz, alt: 'InnovaKidz children learning and creating together', caption: 'Every sponsored child gains access to transformative learning experiences.' },
         imagePosition: 'full',
       },
       {
-        heading: 'Hands-On Learning Tracks',
+        heading: 'What Every Sponsored Child Receives',
         paragraphs: [
-          'InnovaKidz offers structured tracks across photography, drama and theatre, public speaking, sports, and audio and media technology. Each track is taught by coaches who blend instruction with play — because learning at this age must feel alive.',
-          'Children rotate through activities that build fine motor skills, confidence on stage, teamwork on the field, and technical comfort with cameras and microphones. No prior experience is required; enthusiasm is the only prerequisite.',
+          'Each sponsored child gains access to high-quality extracurricular learning in areas such as public speaking, sports, digital skills, arts, leadership development, and creative expression. These experiences help children develop critical life skills including resilience, communication, teamwork, problem-solving, and self-confidence. For many participants, InnovaKidz becomes the first step toward a lifelong journey of learning and personal growth.',
         ],
-        image: { src: programMedia.innovakidz.photos[1], alt: 'Children learning at Light Center', caption: 'Light Center hosts InnovaKidz sessions year-round.' },
+        image: { src: programMedia.innovakidz.photos[1], alt: 'Children learning at Light Center', caption: 'Structured tracks build confidence, creativity, and practical skills.' },
         imagePosition: 'left',
       },
       {
-        heading: 'Creativity Meets Heritage',
+        heading: 'Impact Beyond the Individual',
         paragraphs: [
-          'What sets InnovaKidz apart is its integration of creativity and culture. Rwandan children are the proud inheritors of a rich cultural tradition — dance, music, storytelling, and visual arts that have defined communities for generations.',
-          'InnovaKidz honors that heritage while equipping participants with tools for the modern world. A child might learn traditional Intore dance one week and basic video editing the next, understanding that both are expressions of the same creative spirit.',
+          'The impact extends far beyond the individual child. Parents consistently report improvements in their children\'s discipline, motivation, academic engagement, and self-esteem. Communities benefit as young people become more active, responsible, and equipped to contribute positively to society.',
         ],
-        image: { src: programMedia.innovakidz.photos[2], alt: 'Creative workshop for young learners', caption: 'Traditional culture and modern media skills go hand in hand.' },
+        image: { src: programMedia.innovakidz.photos[2], alt: 'InnovaKidz creative learning session', caption: 'Families and communities feel the ripple effect of every sponsorship.' },
         imagePosition: 'right',
       },
       {
-        heading: 'Building Confidence for Life',
+        heading: 'Part of the ValuEd Ecosystem',
         paragraphs: [
-          'The outcomes of InnovaKidz extend far beyond any single skill. Parents and teachers report increased confidence, better communication, stronger peer relationships, and a willingness to try new things.',
-          'Many InnovaKidz graduates transition into VSEP school programs and later ValueXchange workshops — carrying with them a foundation of creativity and courage that makes every next step easier.',
+          'Every child who enters InnovaKidz becomes part of the broader ValuEd ecosystem of opportunity. Today\'s sponsored participant may become tomorrow\'s youth leader, entrepreneur, innovator, educator, or community changemaker. Through continued access to ValuEd programs, children are supported throughout their developmental journey, unlocking opportunities that would otherwise remain out of reach.',
         ],
-        image: { src: programMedia.innovakidz.photos[3], alt: 'Youth sports activity', caption: 'Sports build teamwork and resilience alongside artistic tracks.' },
+        image: { src: programMedia.innovakidz.photos[3], alt: 'Youth sports and teamwork at InnovaKidz', caption: 'InnovaKidz is the first step in a lifelong journey of growth.' },
         imagePosition: 'below',
       },
       {
-        heading: 'Join InnovaKidz',
+        heading: 'Your Support Can Change a Life',
         paragraphs: [
-          'Enrollment opens annually with sessions running throughout the school calendar. Families in the Kigali area can visit Light Center in Kabuga, Gasabo to learn more about upcoming intakes and track availability.',
-          'ValuEd believes the investment in a child\'s creative years pays dividends for decades — for the individual, their family, and Rwanda as a whole.',
+          'Your support can change the trajectory of a child\'s life. By sponsoring a child, you provide more than education and activities—you provide hope, opportunity, mentorship, and the chance for a young person to reach their full potential.',
+          'Together, we can ensure that every child, regardless of their economic background, has the opportunity to learn, thrive, and become a force for positive change in Rwanda.',
         ],
       },
     ],
     highlights: [
-      '160+ children/year',
-      'Photography',
-      'Drama & theatre',
+      'Child sponsorship',
       'Public speaking',
-      'Sports',
-      'Audio & media tech',
+      'Sports & arts',
+      'Digital skills',
+      'Leadership development',
+      'Creative expression',
     ],
   },
 ] as const;
@@ -518,11 +516,11 @@ export const impactArticles: readonly ImpactArticle[] = [
     id: 'valuexchange',
     title: 'ValueXchange Workshops — Opening Doors',
     tagline: 'From training rooms to real-world opportunity',
-    image: programMedia.valuexchange.hero,
+    image: publicProgramImages.valuexchange.hero,
     imageAlt: 'Youth at a ValueXchange workshop',
     inlineImages: [
-      { src: programMedia.valuexchange.photos[1], alt: 'ValueXchange youth collaboration' },
-      { src: programMedia.valuexchange.photos[2], alt: 'Hands-on ValueXchange training' },
+      { src: publicProgramImages.valuexchange.photos[0], alt: 'ValueXchange youth collaboration' },
+      { src: publicProgramImages.valuexchange.photos[1], alt: 'Hands-on ValueXchange training' },
     ],
     stats: [
       { value: '12+', label: 'Workshops per year' },
@@ -540,11 +538,11 @@ export const impactArticles: readonly ImpactArticle[] = [
     id: 'connect-cheers',
     title: 'Connect & Cheers — Making Success Visible',
     tagline: 'Where achievement meets opportunity',
-    image: "/images/connect-cheers.jpeg",
+    image: publicProgramImages.connectCheers.hero,
     imageAlt: 'Connect & Cheers community event',
     inlineImages: [
-      { src: programMedia.connectCheers.photos[5], alt: 'Youth performance at Connect & Cheers' },
-      { src: programMedia.connectCheers.photos[10], alt: 'Community celebration at ValuEd' },
+      { src: publicProgramImages.connectCheers.photos[1], alt: 'Youth performance at Connect & Cheers' },
+      { src: publicProgramImages.connectCheers.photos[2], alt: 'Community celebration at ValuEd' },
     ],
     stats: [
       { value: '12', label: 'Events per year' },

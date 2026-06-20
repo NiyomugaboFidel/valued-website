@@ -127,9 +127,28 @@ export const programMedia = {
 /** Home page program cards — distinct from detail-page heroes */
 export const homeProgramCardImages = {
   vsep: '/images/card5.jpeg',
-  valuexchange: " /images/valuexchange.jpeg",
-  'connect-cheers': "/images/connect-cheers.jpeg",
-  innovakidz: "/images/Innova-kidz.jpeg",
+  valuexchange: '/images/valuexchange.jpeg',
+  'connect-cheers': '/images/connect-cheers.jpeg',
+  innovakidz: '/images/Innova-kidz.jpeg',
+} as const;
+
+/** Program detail pages — images from public/images */
+export const publicProgramImages = {
+  connectCheers: {
+    hero: '/images/connect-cheers.jpeg',
+    photos: [
+      '/images/connect-cheers.jpeg',
+      '/images/conncect-cheers-our-program-picture.jpeg',
+      '/images/conncect-cheers-our-program-picture3.jpeg',
+    ],
+  },
+  valuexchange: {
+    hero: '/images/workshop-picture-2.jpeg',
+    photos: [
+      '/images/workshop-picture-2.jpeg',
+      '/images/workshop-picture-3.jpeg',
+    ],
+  },
 } as const;
 
 /** Shared image map — semantic keys used across pages */
