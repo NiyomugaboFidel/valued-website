@@ -44,14 +44,14 @@ function DesktopNavLink({
 
   return (
     <NavDropdown label={link.label} active={active} overHero={overHero} onOpenChange={onDropdownOpenChange}>
-      <Link
+      {/* <Link
         to={link.path}
         className={`block px-4 py-2.5 text-sm font-medium transition-colors hover:bg-brand-muted hover:text-brand ${
           location.pathname === link.path ? 'bg-brand-muted text-brand' : 'text-slate-600'
         }`}
       >
         All Programs
-      </Link>
+      </Link> */}
       {link.children.map((child) => (
         <Link
           key={child.path}
@@ -130,7 +130,7 @@ function MobileNavLink({
             exit={{ height: 0, opacity: 0 }}
             className={`overflow-hidden border-l-2 pl-3 ${overHero ? 'border-white/30' : 'border-brand/20'}`}
           >
-            <NavLink
+            {/* <NavLink
               to={link.path}
               onClick={onNavigate}
               className={() =>
@@ -146,7 +146,7 @@ function MobileNavLink({
               }
             >
               All Programs
-            </NavLink>
+            </NavLink> */}
             {link.children.map((child) => (
               <NavLink
                 key={child.path}

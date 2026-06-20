@@ -126,10 +126,10 @@ export const programMedia = {
 
 /** Home page program cards — distinct from detail-page heroes */
 export const homeProgramCardImages = {
-  vsep: programMedia.vsep.photos[4],
-  valuexchange: programMedia.valuexchange.card,
-  'connect-cheers': programMedia.connectCheers.photos[7],
-  innovakidz: programMedia.innovakidz.photos[8],
+  vsep: '/images/card5.jpeg',
+  valuexchange: " /images/valuexchange.jpeg",
+  'connect-cheers': "/images/connect-cheers.jpeg",
+  innovakidz: "/images/Innova-kidz.jpeg",
 } as const;
 
 /** Shared image map — semantic keys used across pages */

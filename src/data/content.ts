@@ -75,9 +75,9 @@ export const aboutGalleryImages = [
 ] as const;
 
 export const aboutGalleryStack = [
-  { src: homeAboutStackImages[0], alt: 'ValuEd youth learning together' },
-  { src: homeAboutStackImages[1], alt: 'Hands-on skills training at ValuEd' },
-  { src: homeAboutStackImages[2], alt: 'Community and mentorship at ValuEd' },
+  { src: "/images/card.jpeg", alt: 'ValuEd youth learning together' },
+  { src: "/images/card5.jpeg", alt: 'Hands-on skills training at ValuEd' },
+  { src: "/images/card6.jpeg", alt: 'Community and mentorship at ValuEd' },
 ] as const;
 
 export const programsOverview = {
@@ -267,7 +267,7 @@ export const programs: readonly Program[] = [
           'Connect & Cheers is the final activation point in the ValuEd ecosystem — the stage where skills gained through VSEP, ValueXchange, and InnovaKidz are showcased, celebrated, and transformed into real opportunities.',
           'Participants present projects, perform on stage, network with peers, and interact directly with industry leaders and potential employers. It is part talent show, part career fair, and part community festival.',
         ],
-        image: { src: programMedia.connectCheers.photos[0], alt: 'Connect & Cheers community event', caption: 'Monthly events bring together youth, families, and industry guests.' },
+        image: { src: "/images/sportlight.jpeg", alt: 'Connect & Cheers community event', caption: 'Monthly events bring together youth, families, and industry guests.' },
         imagePosition: 'full',
       },
       {
@@ -276,7 +276,7 @@ export const programs: readonly Program[] = [
           'Every month, Connect & Cheers hosts gatherings that mix performance, exhibition, and networking. Football screenings, cultural nights, talent showcases, and project expos rotate through the calendar so there is always something new to experience.',
           'These events are deliberately inclusive — families, school groups, and community members are welcome. The atmosphere is celebratory, but the underlying purpose is serious: connecting young talent to people who can open doors.',
         ],
-        image: { src: programMedia.connectCheers.photos[7], alt: 'Cultural performance at ValuEd event', caption: 'Traditional and contemporary talent share the same stage.' },
+        image: { src:"/images/connect-cheers.jpeg", alt: 'Cultural performance at ValuEd event', caption: 'Traditional and contemporary talent share the same stage.' },
         imagePosition: 'right',
       },
       {
@@ -285,7 +285,7 @@ export const programs: readonly Program[] = [
           'Beyond headline performances, Connect & Cheers features community project showcases — bringing innovative solutions developed through ValuEd programs into the national spotlight.',
           'A team might present a waste-management initiative, a youth-led media project, or a small business born from a ValueXchange workshop. Judges, mentors, and guests provide feedback, encouragement, and in some cases, pathways to funding or employment.',
         ],
-        image: { src: programMedia.connectCheers.photos[12], alt: 'Project presentation at ValuEd', caption: 'Young innovators present solutions to real community challenges.' },
+        image: { src: "/images/Innova-kidz.jpeg", alt: 'Project presentation at ValuEd', caption: 'Young innovators present solutions to real community challenges.' },
         imagePosition: 'left',
       },
       {
@@ -540,7 +540,7 @@ export const impactArticles: readonly ImpactArticle[] = [
     id: 'connect-cheers',
     title: 'Connect & Cheers — Making Success Visible',
     tagline: 'Where achievement meets opportunity',
-    image: programMedia.connectCheers.hero,
+    image: "/images/connect-cheers.jpeg",
     imageAlt: 'Connect & Cheers community event',
     inlineImages: [
       { src: programMedia.connectCheers.photos[5], alt: 'Youth performance at Connect & Cheers' },
