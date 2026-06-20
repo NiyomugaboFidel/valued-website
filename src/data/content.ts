@@ -1,4 +1,4 @@
-import { galleryImages, homeAboutStackImages, images, programMedia } from './images';
+import { galleryImages, images, programMedia } from './images';
 
 export const heroContent = {
   headline: "Building Rwanda's Future Through",
